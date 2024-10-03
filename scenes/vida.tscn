@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd0dk01lgap8a"]
+
+[ext_resource type="Texture2D" uid="uid://b4q4fmm1e5nis" path="res://assets/itens/pixil-frame-0.png" id="1_vqrfm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tvxii"]
+radius = 22.0227
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.99999, -2)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("1_vqrfm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.62939e-06, 3.8147e-06)
+shape = SubResource("CircleShape2D_tvxii")

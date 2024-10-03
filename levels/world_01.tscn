@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://k8nldpuqit22" path="res://assets/ambiente/chao e flores/agorsimAgua.png" id="3_648s1"]
 [ext_resource type="Texture2D" uid="uid://jh0asbm2u83u" path="res://assets/ambiente/chao e flores/chaoQUEPREST.png" id="4_nlupo"]
 [ext_resource type="Texture2D" uid="uid://bmc3bpfvxl2ks" path="res://assets/personagens/sapoSamurai/sapoSamurai.png" id="6_ete1y"]
-[ext_resource type="Texture2D" uid="uid://b4q4fmm1e5nis" path="res://assets/itens/pixil-frame-0.png" id="8_1gaqf"]
+[ext_resource type="PackedScene" uid="uid://bd0dk01lgap8a" path="res://scenes/vida.tscn" id="9_qh0l0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2elbs"]
 texture = ExtResource("1_2oxd5")
@@ -106,6 +106,7 @@ position = Vector2(613.125, 75.75)
 scale = Vector2(7.75781, 6.60938)
 texture = ExtResource("2_hl0s3")
 
-[node name="Pixil-frame-0" type="Sprite2D" parent="."]
-position = Vector2(780, 481)
-texture = ExtResource("8_1gaqf")
+[node name="Vidas" type="Node2D" parent="."]
+
+[node name="Area2D" parent="Vidas" instance=ExtResource("9_qh0l0")]
+position = Vector2(414, 651)
