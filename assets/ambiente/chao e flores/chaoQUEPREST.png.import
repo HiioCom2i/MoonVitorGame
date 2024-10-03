@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4q4fmm1e5nis"
-path="res://.godot/imported/pixil-frame-0.png-c85e6891d3e71d386513faedd370a015.ctex"
+uid="uid://jh0asbm2u83u"
+path="res://.godot/imported/chaoQUEPREST.png-90b5a590e46292a99d52d646d1315c9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://itens/pixil-frame-0.png"
-dest_files=["res://.godot/imported/pixil-frame-0.png-c85e6891d3e71d386513faedd370a015.ctex"]
+source_file="res://assets/ambiente/chao e flores/chaoQUEPREST.png"
+dest_files=["res://.godot/imported/chaoQUEPREST.png-90b5a590e46292a99d52d646d1315c9c.ctex"]
 
 [params]
 
