@@ -108,5 +108,11 @@ texture = ExtResource("2_hl0s3")
 
 [node name="Vidas" type="Node2D" parent="."]
 
-[node name="Area2D" parent="Vidas" instance=ExtResource("9_qh0l0")]
+[node name="vida1" parent="Vidas" instance=ExtResource("9_qh0l0")]
 position = Vector2(414, 651)
+
+[node name="vida2" parent="Vidas" instance=ExtResource("9_qh0l0")]
+position = Vector2(837, 687)
+
+[node name="vida3" parent="Vidas" instance=ExtResource("9_qh0l0")]
+position = Vector2(786, 460)
