@@ -11,7 +11,7 @@ func _ready():
 		
 func _on_life_collected():
 	lifes_collected += 1
-	print("moedas coletadas " + str(lifes_collected))
+	print("vidas coletadas " + str(lifes_collected))
 	$HUD/container_vida/Controle2/contador_vidas.text = " x " + str(lifes_collected)
 
 

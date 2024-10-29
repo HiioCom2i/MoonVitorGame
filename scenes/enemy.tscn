@@ -1,13 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dftrlq3p3rof2"]
 
 [ext_resource type="Texture2D" uid="uid://5sg8k857oyb0" path="res://assets/personagens/inimigos/inimigo1/inimigoMaisPerigoso.png" id="1_5iy38"]
-[ext_resource type="Script" path="res://enemy.gd" id="1_lsrb7"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_k4h3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhboc"]
 size = Vector2(73.5, 34)
 
 [node name="enemy" type="CharacterBody2D"]
-script = ExtResource("1_lsrb7")
+collision_layer = 2
+script = ExtResource("1_k4h3b")
 
 [node name="texture" type="Sprite2D" parent="."]
 position = Vector2(-2, -4)
