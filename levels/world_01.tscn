@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cm3h2ilp7vfkq"]
+[gd_scene load_steps=27 format=3 uid="uid://cm3h2ilp7vfkq"]
 
 [ext_resource type="Texture2D" uid="uid://e6y34rfdramw" path="res://assets/ambiente/chao e flores/chaoFODAII (32x32) (euAcho).png" id="1_2oxd5"]
 [ext_resource type="Script" path="res://levels/world_01.gd" id="1_464k0"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bd0dk01lgap8a" path="res://scenes/vida.tscn" id="9_qh0l0"]
 [ext_resource type="PackedScene" uid="uid://d3uqtay0vxr23" path="res://player.tscn" id="10_rtpl1"]
 [ext_resource type="Texture2D" uid="uid://dyu7ne7yonxmk" path="res://assets/itens/vida.png" id="10_wpbnu"]
+[ext_resource type="PackedScene" uid="uid://c7w4asngbdhj1" path="res://scenes/ataque.tscn" id="15_87lsr"]
+[ext_resource type="Texture2D" uid="uid://cf1261xnqgdxn" path="res://assets/itens/ataque-lingua.png" id="15_jsj4y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2elbs"]
 texture = ExtResource("1_2oxd5")
@@ -100,6 +102,17 @@ position = Vector2(837, 687)
 [node name="vida3" parent="vidas" instance=ExtResource("9_qh0l0")]
 position = Vector2(786, 460)
 
+[node name="ataques" type="Node2D" parent="."]
+
+[node name="ataque1" parent="ataques" instance=ExtResource("15_87lsr")]
+position = Vector2(352, 648)
+
+[node name="ataque2" parent="ataques" instance=ExtResource("15_87lsr")]
+position = Vector2(896, 696)
+
+[node name="ataque3" parent="ataques" instance=ExtResource("15_87lsr")]
+position = Vector2(656, 560)
+
 [node name="inimigos" type="Node2D" parent="."]
 
 [node name="enemy2" parent="inimigos" instance=ExtResource("9_laji4")]
@@ -112,24 +125,24 @@ position = Vector2(885, 601)
 
 [node name="container_vida" type="HBoxContainer" parent="HUD"]
 anchors_preset = -1
-anchor_left = 0.01
-anchor_top = 0.031
-anchor_right = 0.01
-anchor_bottom = 0.031
-offset_left = -50.8
-offset_top = -41.32
-offset_right = 51.2
-offset_bottom = 40.68
+anchor_left = -0.043
+anchor_top = 0.057
+anchor_right = -0.043
+anchor_bottom = 0.057
+offset_left = -7.922
+offset_top = -55.94
+offset_right = 94.078
+offset_bottom = 26.06
 
 [node name="Controle1" type="Control" parent="HUD/container_vida"]
 layout_mode = 2
 
 [node name="icone_vida_hud" type="TextureRect" parent="HUD/container_vida/Controle1"]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 19.0
-offset_right = 76.0
-offset_bottom = 69.0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 90.0
+offset_bottom = 66.0
 scale = Vector2(2, 2)
 texture = ExtResource("10_wpbnu")
 
@@ -138,89 +151,125 @@ layout_mode = 2
 
 [node name="contador_vidas" type="Label" parent="HUD/container_vida/Controle2"]
 layout_mode = 0
-offset_left = 105.0
-offset_top = 49.0
-offset_right = 177.0
-offset_bottom = 96.0
+offset_left = 124.0
+offset_top = 48.0
+offset_right = 196.0
+offset_bottom = 95.0
 scale = Vector2(2, 2)
 text = " x 0"
 
-[node name="Area1" type="Area2D" parent="."]
+[node name="container_ataque" type="HBoxContainer" parent="HUD"]
+anchors_preset = -1
+anchor_left = -0.021
+anchor_top = 0.19
+anchor_right = -0.021
+anchor_bottom = 0.19
+offset_left = 15.666
+offset_top = 8.2
+offset_right = 117.666
+offset_bottom = 90.2
+
+[node name="Controle1" type="Control" parent="HUD/container_ataque"]
+layout_mode = 2
+
+[node name="icone_ataque_hud" type="TextureRect" parent="HUD/container_ataque/Controle1"]
+layout_mode = 0
+offset_top = -40.0
+offset_right = 64.0
+offset_bottom = 24.0
+scale = Vector2(2, 2)
+texture = ExtResource("15_jsj4y")
+
+[node name="Controle2" type="Control" parent="HUD/container_ataque"]
+layout_mode = 2
+
+[node name="contador_ataques" type="Label" parent="HUD/container_ataque/Controle2"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = -8.0
+offset_right = 156.0
+offset_bottom = 39.0
+scale = Vector2(2, 2)
+text = " x 0"
+
+[node name="Áreas" type="Node2D" parent="."]
+
+[node name="Area1" type="Area2D" parent="Áreas"]
 position = Vector2(540, 1085)
 scale = Vector2(2, 2)
 
-[node name="colisao" type="CollisionShape2D" parent="Area1"]
+[node name="colisao" type="CollisionShape2D" parent="Áreas/Area1"]
 light_mask = 0
 position = Vector2(-14, -0.5)
 shape = SubResource("RectangleShape2D_apjwd")
 
-[node name="Area2" type="Area2D" parent="."]
+[node name="Area2" type="Area2D" parent="Áreas"]
 position = Vector2(1000, 1088)
 scale = Vector2(2, 2)
 
-[node name="colisao" type="CollisionShape2D" parent="Area2"]
+[node name="colisao" type="CollisionShape2D" parent="Áreas/Area2"]
 light_mask = 0
 position = Vector2(-4, -2)
 shape = SubResource("RectangleShape2D_apjwd")
 
-[node name="Area3" type="Area2D" parent="."]
+[node name="Area3" type="Area2D" parent="Áreas"]
 position = Vector2(1504, 1080)
 scale = Vector2(2, 2)
 
-[node name="colisao" type="CollisionShape2D" parent="Area3"]
+[node name="colisao" type="CollisionShape2D" parent="Áreas/Area3"]
 light_mask = 0
 position = Vector2(-16, 2)
 shape = SubResource("RectangleShape2D_apjwd")
 
-[node name="Area4" type="Area2D" parent="."]
+[node name="Area4" type="Area2D" parent="Áreas"]
 position = Vector2(520, 1557)
 scale = Vector2(2, 2)
 
-[node name="colisao" type="CollisionShape2D" parent="Area4"]
+[node name="colisao" type="CollisionShape2D" parent="Áreas/Area4"]
 light_mask = 0
 position = Vector2(-4, 5.5)
 shape = SubResource("RectangleShape2D_apjwd")
 
-[node name="Area5" type="Area2D" parent="."]
+[node name="Area5" type="Area2D" parent="Áreas"]
 position = Vector2(1000, 1568)
 scale = Vector2(2, 2)
 
-[node name="colisao" type="CollisionShape2D" parent="Area5"]
+[node name="colisao" type="CollisionShape2D" parent="Áreas/Area5"]
 light_mask = 0
 position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_apjwd")
 
-[node name="Area6" type="Area2D" parent="."]
+[node name="Area6" type="Area2D" parent="Áreas"]
 position = Vector2(1472, 1568)
 scale = Vector2(2, 2)
 
-[node name="colisao" type="CollisionShape2D" parent="Area6"]
+[node name="colisao" type="CollisionShape2D" parent="Áreas/Area6"]
 light_mask = 0
 shape = SubResource("RectangleShape2D_apjwd")
 
-[node name="Area7" type="Area2D" parent="."]
+[node name="Area7" type="Area2D" parent="Áreas"]
 position = Vector2(512, 2024)
 scale = Vector2(2, 2)
 
-[node name="colisao" type="CollisionShape2D" parent="Area7"]
+[node name="colisao" type="CollisionShape2D" parent="Áreas/Area7"]
 light_mask = 0
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_apjwd")
 
-[node name="Area8" type="Area2D" parent="."]
+[node name="Area8" type="Area2D" parent="Áreas"]
 position = Vector2(992, 2035)
 scale = Vector2(2, 2)
 
-[node name="colisao" type="CollisionShape2D" parent="Area8"]
+[node name="colisao" type="CollisionShape2D" parent="Áreas/Area8"]
 light_mask = 0
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_apjwd")
 
-[node name="Area9" type="Area2D" parent="."]
+[node name="Area9" type="Area2D" parent="Áreas"]
 position = Vector2(1464, 2035)
 scale = Vector2(2, 2)
 
-[node name="colisao" type="CollisionShape2D" parent="Area9"]
+[node name="colisao" type="CollisionShape2D" parent="Áreas/Area9"]
 light_mask = 0
 position = Vector2(4, 2.5)
 shape = SubResource("RectangleShape2D_apjwd")

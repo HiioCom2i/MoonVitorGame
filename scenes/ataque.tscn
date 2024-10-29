@@ -1,0 +1,79 @@
+[gd_scene load_steps=16 format=3 uid="uid://c7w4asngbdhj1"]
+
+[ext_resource type="Texture2D" uid="uid://sb1uiepvl1fj" path="res://assets/itens/anim-ataque-lingua/ataque-lingua1.png" id="1_dpra5"]
+[ext_resource type="Script" path="res://scripts/ataque.gd" id="1_ryqln"]
+[ext_resource type="Texture2D" uid="uid://c7melajp7mp51" path="res://assets/itens/anim-ataque-lingua/ataque-lingua2.png" id="2_o1pn8"]
+[ext_resource type="Texture2D" uid="uid://bm32ca8yvoale" path="res://assets/itens/anim-ataque-lingua/ataque-lingua3.png" id="3_mt7y4"]
+[ext_resource type="Texture2D" uid="uid://cgg7fvj8askpd" path="res://assets/itens/anim-ataque-lingua/ataque-lingua4.png" id="4_3fvgb"]
+[ext_resource type="Texture2D" uid="uid://bkgvj4n4t51rt" path="res://assets/itens/anim-ataque-lingua/ataque-lingua5.png" id="5_m00r0"]
+[ext_resource type="Texture2D" uid="uid://cdaytoh4rmuru" path="res://assets/itens/anim-ataque-lingua/ataque-lingua6.png" id="6_tf5wj"]
+[ext_resource type="Texture2D" uid="uid://d1ec6123nmqna" path="res://assets/itens/anim-ataque-lingua/ataque-lingua7.png" id="7_f4ghn"]
+[ext_resource type="Texture2D" uid="uid://cdo3onti5juuw" path="res://assets/itens/anim-ataque-lingua/ataque-lingua8.png" id="8_64nu7"]
+[ext_resource type="Texture2D" uid="uid://bf5w67fhx164k" path="res://assets/itens/anim-ataque-lingua/ataque-lingua9.png" id="9_3ntv4"]
+[ext_resource type="Texture2D" uid="uid://bn4uvunl4c33m" path="res://assets/itens/anim-ataque-lingua/ataque-lingua10.png" id="10_n52w2"]
+[ext_resource type="Texture2D" uid="uid://dc1myb1r5se83" path="res://assets/itens/anim-ataque-lingua/ataque-lingua11.png" id="11_5gcm4"]
+[ext_resource type="Texture2D" uid="uid://baxd21blj8xbd" path="res://assets/itens/anim-ataque-lingua/ataque-lingua12.png" id="12_puxok"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8sjc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dpra5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o1pn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mt7y4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3fvgb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m00r0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tf5wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f4ghn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_64nu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3ntv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_n52w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5gcm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_puxok")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7uxdx"]
+radius = 34.2345
+
+[node name="ataque" type="Area2D"]
+script = ExtResource("1_ryqln")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.1875, 2.53125)
+scale = Vector2(1.25586, 1.11035)
+sprite_frames = SubResource("SpriteFrames_e8sjc")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.454754
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.1875, -0.46875)
+shape = SubResource("CircleShape2D_7uxdx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
