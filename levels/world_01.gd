@@ -1,8 +1,11 @@
 extends Node2D
 
 
-var lifes_collected = 0 
-var attacks_collected = 0
+var lifes_collected = 1     # usados para recuperar corações
+var attacks_collected = 2   # usado para atacar
+var player_hearts = 5       # a vida do jogador, 
+							# ficou meio confuso os nomes do recurso de
+							# recuperar vida e a vida, mas paciência
 
 func _ready():
 	# Conectando o sinal de cada vida ao método que atualiza seu contador

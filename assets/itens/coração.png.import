@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyu7ne7yonxmk"
-path="res://.godot/imported/vida.png-72120458e6565ed4a62a18beda939cc8.ctex"
+uid="uid://47t6y2jnuhll"
+path="res://.godot/imported/coração.png-50286948181b437d28ec182997fcd3d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/itens/vida.png"
-dest_files=["res://.godot/imported/vida.png-72120458e6565ed4a62a18beda939cc8.ctex"]
+source_file="res://assets/itens/coração.png"
+dest_files=["res://.godot/imported/coração.png-50286948181b437d28ec182997fcd3d4.ctex"]
 
 [params]
 

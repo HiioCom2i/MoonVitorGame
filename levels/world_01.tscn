@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cm3h2ilp7vfkq"]
+[gd_scene load_steps=28 format=3 uid="uid://cm3h2ilp7vfkq"]
 
 [ext_resource type="Texture2D" uid="uid://e6y34rfdramw" path="res://assets/ambiente/chao e flores/chaoFODAII (32x32) (euAcho).png" id="1_2oxd5"]
 [ext_resource type="Script" path="res://levels/world_01.gd" id="1_464k0"]
@@ -13,9 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://dftrlq3p3rof2" path="res://scenes/enemy.tscn" id="9_laji4"]
 [ext_resource type="PackedScene" uid="uid://bd0dk01lgap8a" path="res://scenes/vida.tscn" id="9_qh0l0"]
 [ext_resource type="PackedScene" uid="uid://d3uqtay0vxr23" path="res://player.tscn" id="10_rtpl1"]
-[ext_resource type="Texture2D" uid="uid://dyu7ne7yonxmk" path="res://assets/itens/vida.png" id="10_wpbnu"]
+[ext_resource type="Texture2D" uid="uid://dyu7ne7yonxmk" path="res://assets/itens/kit-medico.png" id="10_wpbnu"]
 [ext_resource type="PackedScene" uid="uid://c7w4asngbdhj1" path="res://scenes/ataque.tscn" id="15_87lsr"]
 [ext_resource type="Texture2D" uid="uid://cf1261xnqgdxn" path="res://assets/itens/ataque-lingua.png" id="15_jsj4y"]
+[ext_resource type="Texture2D" uid="uid://47t6y2jnuhll" path="res://assets/itens/coração.png" id="17_6y0ov"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2elbs"]
 texture = ExtResource("1_2oxd5")
@@ -156,7 +157,7 @@ offset_top = 48.0
 offset_right = 196.0
 offset_bottom = 95.0
 scale = Vector2(2, 2)
-text = " x 0"
+text = " x 1"
 
 [node name="container_ataque" type="HBoxContainer" parent="HUD"]
 anchors_preset = -1
@@ -190,7 +191,42 @@ offset_top = -8.0
 offset_right = 156.0
 offset_bottom = 39.0
 scale = Vector2(2, 2)
-text = " x 0"
+text = " x 2"
+
+[node name="container_vida_persongem" type="HBoxContainer" parent="HUD"]
+anchors_preset = -1
+anchor_left = -0.021
+anchor_top = 0.19
+anchor_right = -0.021
+anchor_bottom = 0.19
+offset_left = 15.666
+offset_top = 8.2
+offset_right = 117.666
+offset_bottom = 90.2
+
+[node name="Controle1" type="Control" parent="HUD/container_vida_persongem"]
+layout_mode = 2
+
+[node name="icone_ataque_hud" type="TextureRect" parent="HUD/container_vida_persongem/Controle1"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 60.0
+offset_bottom = 84.0
+scale = Vector2(2, 2)
+texture = ExtResource("17_6y0ov")
+
+[node name="Controle2" type="Control" parent="HUD/container_vida_persongem"]
+layout_mode = 2
+
+[node name="contador_ataques" type="Label" parent="HUD/container_vida_persongem/Controle2"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 56.0
+offset_right = 156.0
+offset_bottom = 103.0
+scale = Vector2(2, 2)
+text = " x 5"
 
 [node name="Áreas" type="Node2D" parent="."]
 
