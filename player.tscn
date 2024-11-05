@@ -44,7 +44,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7or8"]
-radius = 194.023
+radius = 134.004
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(626, 457)
@@ -65,7 +65,6 @@ libraries = {
 }
 
 [node name="Aura_sapo" type="Area2D" parent="."]
-visible = false
 
 [node name="circulo" type="CollisionShape2D" parent="Aura_sapo"]
 shape = SubResource("CircleShape2D_w7or8")

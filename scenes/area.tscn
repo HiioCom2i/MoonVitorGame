@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5klqyemiujr8"]
+
+[ext_resource type="Script" path="res://scripts/area.gd" id="1_mtgpk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_apjwd"]
+size = Vector2(240, 234.438)
+
+[node name="Area1" type="Area2D"]
+position = Vector2(540, 1085)
+scale = Vector2(2, 2)
+script = ExtResource("1_mtgpk")
+
+[node name="colisao" type="CollisionShape2D" parent="."]
+light_mask = 0
+position = Vector2(-14, -0.5)
+shape = SubResource("RectangleShape2D_apjwd")

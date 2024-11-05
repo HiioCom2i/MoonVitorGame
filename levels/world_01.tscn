@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c7w4asngbdhj1" path="res://scenes/ataque.tscn" id="15_87lsr"]
 [ext_resource type="Texture2D" uid="uid://cf1261xnqgdxn" path="res://assets/itens/ataque-lingua.png" id="15_jsj4y"]
 [ext_resource type="Texture2D" uid="uid://47t6y2jnuhll" path="res://assets/itens/coração.png" id="17_6y0ov"]
+[ext_resource type="PackedScene" uid="uid://c5klqyemiujr8" path="res://scenes/area.tscn" id="18_yx72o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2elbs"]
 texture = ExtResource("1_2oxd5")
@@ -67,9 +68,6 @@ sources/5 = SubResource("TileSetAtlasSource_nqhwd")
 sources/6 = SubResource("TileSetAtlasSource_c6wwo")
 sources/7 = SubResource("TileSetAtlasSource_jxnmh")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_apjwd"]
-size = Vector2(240, 234.438)
-
 [node name="world-01" type="Node2D"]
 script = ExtResource("1_464k0")
 
@@ -117,10 +115,10 @@ position = Vector2(656, 560)
 [node name="inimigos" type="Node2D" parent="."]
 
 [node name="enemy2" parent="inimigos" instance=ExtResource("9_laji4")]
-position = Vector2(392, 545)
+position = Vector2(520, 1008)
 
 [node name="enemy" parent="inimigos" instance=ExtResource("9_laji4")]
-position = Vector2(885, 601)
+position = Vector2(504, 1200)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -139,11 +137,14 @@ offset_bottom = 26.06
 layout_mode = 2
 
 [node name="icone_vida_hud" type="TextureRect" parent="HUD/container_vida/Controle1"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 16.0
-offset_right = 90.0
-offset_bottom = 66.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.39
+anchor_bottom = 0.39
+offset_left = 49.0
+offset_top = -31.98
+offset_right = 107.0
+offset_bottom = 18.02
 scale = Vector2(2, 2)
 texture = ExtResource("10_wpbnu")
 
@@ -151,33 +152,40 @@ texture = ExtResource("10_wpbnu")
 layout_mode = 2
 
 [node name="contador_vidas" type="Label" parent="HUD/container_vida/Controle2"]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 48.0
-offset_right = 196.0
-offset_bottom = 95.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.39
+anchor_bottom = 0.39
+offset_left = 141.0
+offset_top = 0.0199986
+offset_right = 213.0
+offset_bottom = 47.02
 scale = Vector2(2, 2)
 text = " x 1"
 
 [node name="container_ataque" type="HBoxContainer" parent="HUD"]
 anchors_preset = -1
-anchor_left = -0.021
-anchor_top = 0.19
-anchor_right = -0.021
-anchor_bottom = 0.19
-offset_left = 15.666
-offset_top = 8.2
-offset_right = 117.666
-offset_bottom = 90.2
+anchor_left = -0.042
+anchor_top = 0.062
+anchor_right = -0.042
+anchor_bottom = 0.062
+offset_left = 39.858
+offset_top = 91.144
+offset_right = 141.858
+offset_bottom = 173.144
 
 [node name="Controle1" type="Control" parent="HUD/container_ataque"]
 layout_mode = 2
 
 [node name="icone_ataque_hud" type="TextureRect" parent="HUD/container_ataque/Controle1"]
-layout_mode = 0
-offset_top = -40.0
-offset_right = 64.0
-offset_bottom = 24.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -1.504
+anchor_bottom = -1.504
+offset_left = 0.525999
+offset_top = 40.008
+offset_right = 64.526
+offset_bottom = 104.008
 scale = Vector2(2, 2)
 texture = ExtResource("15_jsj4y")
 
@@ -186,33 +194,33 @@ layout_mode = 2
 
 [node name="contador_ataques" type="Label" parent="HUD/container_ataque/Controle2"]
 layout_mode = 0
-offset_left = 84.0
-offset_top = -8.0
-offset_right = 156.0
-offset_bottom = 39.0
+offset_left = 92.526
+offset_top = -54.64
+offset_right = 164.526
+offset_bottom = -7.63998
 scale = Vector2(2, 2)
 text = " x 2"
 
 [node name="container_vida_persongem" type="HBoxContainer" parent="HUD"]
 anchors_preset = -1
-anchor_left = -0.021
-anchor_top = 0.19
-anchor_right = -0.021
-anchor_bottom = 0.19
-offset_left = 15.666
-offset_top = 8.2
-offset_right = 117.666
-offset_bottom = 90.2
+anchor_left = -0.042
+anchor_top = 0.062
+anchor_right = -0.042
+anchor_bottom = 0.062
+offset_left = 200.384
+offset_top = 95.824
+offset_right = 302.384
+offset_bottom = 177.824
 
 [node name="Controle1" type="Control" parent="HUD/container_vida_persongem"]
 layout_mode = 2
 
 [node name="icone_ataque_hud" type="TextureRect" parent="HUD/container_vida_persongem/Controle1"]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 48.0
-offset_right = 60.0
-offset_bottom = 84.0
+offset_left = -133.0
+offset_top = 8.0
+offset_right = -97.0
+offset_bottom = 44.0
 scale = Vector2(2, 2)
 texture = ExtResource("17_6y0ov")
 
@@ -221,91 +229,47 @@ layout_mode = 2
 
 [node name="contador_ataques" type="Label" parent="HUD/container_vida_persongem/Controle2"]
 layout_mode = 0
-offset_left = 84.0
-offset_top = 56.0
-offset_right = 156.0
-offset_bottom = 103.0
+offset_left = -68.0
+offset_top = 16.0
+offset_right = 4.0
+offset_bottom = 63.0
 scale = Vector2(2, 2)
 text = " x 5"
 
 [node name="Áreas" type="Node2D" parent="."]
 
-[node name="Area1" type="Area2D" parent="Áreas"]
-position = Vector2(540, 1085)
-scale = Vector2(2, 2)
+[node name="Area1" parent="Áreas" node_paths=PackedStringArray("enemies") instance=ExtResource("18_yx72o")]
+area_id = "Area1"
+enemies = [NodePath("../../inimigos/enemy"), NodePath("../../inimigos/enemy2")]
 
-[node name="colisao" type="CollisionShape2D" parent="Áreas/Area1"]
-light_mask = 0
-position = Vector2(-14, -0.5)
-shape = SubResource("RectangleShape2D_apjwd")
+[node name="Area2" parent="Áreas" instance=ExtResource("18_yx72o")]
+position = Vector2(1024, 1088)
+area_id = "Area2"
 
-[node name="Area2" type="Area2D" parent="Áreas"]
-position = Vector2(1000, 1088)
-scale = Vector2(2, 2)
+[node name="Area3" parent="Áreas" instance=ExtResource("18_yx72o")]
+position = Vector2(1504, 1088)
+area_id = "Area3"
 
-[node name="colisao" type="CollisionShape2D" parent="Áreas/Area2"]
-light_mask = 0
-position = Vector2(-4, -2)
-shape = SubResource("RectangleShape2D_apjwd")
+[node name="Area4" parent="Áreas" instance=ExtResource("18_yx72o")]
+position = Vector2(536, 1568)
+area_id = "Area4"
 
-[node name="Area3" type="Area2D" parent="Áreas"]
-position = Vector2(1504, 1080)
-scale = Vector2(2, 2)
+[node name="Area5" parent="Áreas" instance=ExtResource("18_yx72o")]
+position = Vector2(1024, 1568)
+area_id = "Area5"
 
-[node name="colisao" type="CollisionShape2D" parent="Áreas/Area3"]
-light_mask = 0
-position = Vector2(-16, 2)
-shape = SubResource("RectangleShape2D_apjwd")
+[node name="Area6" parent="Áreas" instance=ExtResource("18_yx72o")]
+position = Vector2(1504, 1568)
+area_id = "Area6"
 
-[node name="Area4" type="Area2D" parent="Áreas"]
-position = Vector2(520, 1557)
-scale = Vector2(2, 2)
+[node name="Area7" parent="Áreas" instance=ExtResource("18_yx72o")]
+position = Vector2(536, 2056)
+area_id = "Area7"
 
-[node name="colisao" type="CollisionShape2D" parent="Áreas/Area4"]
-light_mask = 0
-position = Vector2(-4, 5.5)
-shape = SubResource("RectangleShape2D_apjwd")
+[node name="Area8" parent="Áreas" instance=ExtResource("18_yx72o")]
+position = Vector2(1016, 2056)
+area_id = "Area8"
 
-[node name="Area5" type="Area2D" parent="Áreas"]
-position = Vector2(1000, 1568)
-scale = Vector2(2, 2)
-
-[node name="colisao" type="CollisionShape2D" parent="Áreas/Area5"]
-light_mask = 0
-position = Vector2(-4, 0)
-shape = SubResource("RectangleShape2D_apjwd")
-
-[node name="Area6" type="Area2D" parent="Áreas"]
-position = Vector2(1472, 1568)
-scale = Vector2(2, 2)
-
-[node name="colisao" type="CollisionShape2D" parent="Áreas/Area6"]
-light_mask = 0
-shape = SubResource("RectangleShape2D_apjwd")
-
-[node name="Area7" type="Area2D" parent="Áreas"]
-position = Vector2(512, 2024)
-scale = Vector2(2, 2)
-
-[node name="colisao" type="CollisionShape2D" parent="Áreas/Area7"]
-light_mask = 0
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_apjwd")
-
-[node name="Area8" type="Area2D" parent="Áreas"]
-position = Vector2(992, 2035)
-scale = Vector2(2, 2)
-
-[node name="colisao" type="CollisionShape2D" parent="Áreas/Area8"]
-light_mask = 0
-position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_apjwd")
-
-[node name="Area9" type="Area2D" parent="Áreas"]
-position = Vector2(1464, 2035)
-scale = Vector2(2, 2)
-
-[node name="colisao" type="CollisionShape2D" parent="Áreas/Area9"]
-light_mask = 0
-position = Vector2(4, 2.5)
-shape = SubResource("RectangleShape2D_apjwd")
+[node name="Area9" parent="Áreas" instance=ExtResource("18_yx72o")]
+position = Vector2(1504, 2056)
+area_id = "Area9"
