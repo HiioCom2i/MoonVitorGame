@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dftrlq3p3rof2"]
+[gd_scene load_steps=6 format=3 uid="uid://dftrlq3p3rof2"]
 
 [ext_resource type="Texture2D" uid="uid://5sg8k857oyb0" path="res://assets/personagens/inimigos/inimigo1/inimigoMaisPerigoso.png" id="1_5iy38"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_k4h3b"]
+[ext_resource type="PackedScene" uid="uid://jd3swljpxcl4" path="res://prefabs/hitbox.tscn" id="3_astn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhboc"]
 size = Vector2(73.5, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukmka"]
+size = Vector2(50.125, 22)
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -21,3 +25,9 @@ position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_lhboc")
 
 [node name="anim" type="AnimationPlayer" parent="."]
+
+[node name="hitbox" parent="." instance=ExtResource("3_astn8")]
+
+[node name="collision" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-15.0625, -1)
+shape = SubResource("RectangleShape2D_ukmka")

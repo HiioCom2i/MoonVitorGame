@@ -38,7 +38,8 @@ func _physics_process(delta: float) -> void:
 		# Calcula a direção em direção ao jogador
 		var direction_to_player = (player.position - position).normalized()
 		velocity = direction_to_player * CHASE_SPEED  # Define a velocidade para perseguição
-		texture.flip_h = direction_to_player.x < 0  # Ajusta a orientação do sprite
+		
+		texture.flip_h = direction_to_player.x  # Ajusta a orientação do sprite
 	else:
 		patrol(delta)
 
