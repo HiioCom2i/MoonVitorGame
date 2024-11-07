@@ -44,7 +44,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7or8"]
-radius = 134.004
+radius = 78.0064
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(626, 457)

@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name BaseCharacter
 
 @export_category("Variables")
-@export var _move_speed: float = 128.0
+@export var _move_speed: float
 
 # Variável de direção para movimentação
 var _direction: Vector2

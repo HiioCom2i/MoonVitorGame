@@ -16,8 +16,8 @@ var player: BaseCharacter
 func _ready():
 	# Captura a posição inicial e define os limites
 	initial_position = position
-	limEsq = initial_position.x - 50
-	limDir = initial_position.x + 50
+	limEsq = initial_position.x - 150
+	limDir = initial_position.x + 150
 	player = get_tree().get_root().get_node("world-01/player")
 
 
@@ -29,8 +29,8 @@ func start_chasing() -> void:
 # Função para parar a perseguição e voltar à patrulha
 func stop_chasing() -> void:
 	is_chasing = false
-	limEsq = position.x - 50
-	limDir = position.x + 50
+	limEsq = initial_position.x - 150
+	limDir = initial_position.x + 150
 	SPEED = 100.0  # Velocidade normal de patrulha
 
 func _physics_process(delta: float) -> void:
