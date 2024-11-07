@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dftrlq3p3rof2"]
 
-[ext_resource type="Texture2D" uid="uid://5sg8k857oyb0" path="res://assets/personagens/inimigos/inimigo1/inimigoMaisPerigoso.png" id="1_5iy38"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_k4h3b"]
+[ext_resource type="Texture2D" uid="uid://cxqpegfo65oqr" path="res://assets/personagens/inimigos/inimigo1/inimigoMaisPerigosoRemake1.png" id="2_7jehb"]
 [ext_resource type="PackedScene" uid="uid://jd3swljpxcl4" path="res://prefabs/hitbox.tscn" id="3_astn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhboc"]
@@ -15,12 +15,11 @@ collision_layer = 2
 script = ExtResource("1_k4h3b")
 
 [node name="texture" type="Sprite2D" parent="."]
-position = Vector2(-2, -4)
+position = Vector2(16, -5)
 scale = Vector2(1.54, 1.57692)
-texture = ExtResource("1_5iy38")
+texture = ExtResource("2_7jehb")
 
 [node name="collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1, -2)
 shape = SubResource("RectangleShape2D_lhboc")
 

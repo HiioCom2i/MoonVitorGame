@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 @onready var texture := $texture as Sprite2D
-@export var SPEED: float = 100.0  # Valor padrão de velocidade
-@export var CHASE_SPEED: float = 150.0  # Velocidade aumentada para perseguição
+@export var SPEED: float = 100.0  # Velocidade padrão de patrulha
+@export var CHASE_SPEED: float = 150.0  # Velocidade de perseguição
+@export var patrol_texture: Texture2D  # Textura para o modo patrulha
+@export var chase_texture: Texture2D   # Textura para o modo perseguição
 
 var limEsq: float
 var limDir: float
@@ -19,27 +21,34 @@ func _ready():
 	limEsq = initial_position.x - 150
 	limDir = initial_position.x + 150
 	player = get_tree().get_root().get_node("world-01/player")
-
+	
+	# Define a textura inicial para o modo patrulha
+	texture.texture = patrol_texture
 
 # Função para iniciar a perseguição
 func start_chasing() -> void:
 	is_chasing = true
 	SPEED = CHASE_SPEED
+	texture.texture = chase_texture  # Troca para a textura de perseguição
 
 # Função para parar a perseguição e voltar à patrulha
 func stop_chasing() -> void:
 	is_chasing = false
-	limEsq = initial_position.x - 150
-	limDir = initial_position.x + 150
 	SPEED = 100.0  # Velocidade normal de patrulha
+	texture.texture = patrol_texture  # Volta para a textura de patrulha
 
 func _physics_process(delta: float) -> void:
 	if is_chasing:
 		# Calcula a direção em direção ao jogador
 		var direction_to_player = (player.position - position).normalized()
 		velocity = direction_to_player * CHASE_SPEED  # Define a velocidade para perseguição
-		
-		texture.flip_h = direction_to_player.x  # Ajusta a orientação do sprite
+		if (player.position.x - position.x) > 0: # Player está na direita do inimigo
+			if direction == -1:
+				texture.flip_h = true
+		else: # Player está na esquerda 
+			if direction == 1:
+				texture.flip_h = false
+			
 	else:
 		patrol(delta)
 
@@ -48,7 +57,6 @@ func _physics_process(delta: float) -> void:
 
 # Função para o comportamento de patrulha
 func patrol(delta: float) -> void:
-	# Lógica de patrulha similar ao código anterior
 	velocity.x = direction * SPEED
 	velocity.y = 0
 	if position.x <= limEsq:
