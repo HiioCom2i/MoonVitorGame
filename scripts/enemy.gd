@@ -11,6 +11,7 @@ var limDir: float
 var direction := -1
 var initial_position: Vector2
 var is_chasing := false
+var vivo = true
 
 # Referência para o jogador
 var player: BaseCharacter
@@ -65,3 +66,9 @@ func patrol(delta: float) -> void:
 	elif position.x >= limDir:
 		direction = -1
 		texture.flip_h = false
+
+
+
+
+
+			

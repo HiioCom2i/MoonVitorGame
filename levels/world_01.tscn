@@ -121,15 +121,17 @@ position = Vector2(656, 560)
 
 [node name="inimigos" type="Node2D" parent="."]
 
-[node name="enemy" parent="inimigos" instance=ExtResource("9_laji4")]
+[node name="enemy" parent="inimigos" node_paths=PackedStringArray("area") instance=ExtResource("9_laji4")]
 position = Vector2(504, 1200)
 patrol_texture = ExtResource("15_ulxlq")
 chase_texture = ExtResource("16_0ta3g")
+area = NodePath("../../Áreas/Area1")
 
-[node name="enemy2" parent="inimigos" instance=ExtResource("9_laji4")]
+[node name="enemy2" parent="inimigos" node_paths=PackedStringArray("area") instance=ExtResource("9_laji4")]
 position = Vector2(520, 1008)
 patrol_texture = ExtResource("15_ulxlq")
 chase_texture = ExtResource("16_0ta3g")
+area = NodePath("../../Áreas/Area1")
 
 [node name="enemy3" parent="inimigos" instance=ExtResource("9_laji4")]
 position = Vector2(970, 1490)
@@ -276,41 +278,32 @@ text = " x 5"
 visible = false
 
 [node name="Area1" parent="Áreas" node_paths=PackedStringArray("enemies") instance=ExtResource("18_yx72o")]
-area_id = "Area1"
 enemies = [NodePath("../../inimigos/enemy"), NodePath("../../inimigos/enemy2")]
 
 [node name="Area2" parent="Áreas" instance=ExtResource("18_yx72o")]
 position = Vector2(1024, 1088)
-area_id = "Area2"
 
 [node name="Area3" parent="Áreas" instance=ExtResource("18_yx72o")]
 position = Vector2(1504, 1088)
-area_id = "Area3"
 
 [node name="Area4" parent="Áreas" instance=ExtResource("18_yx72o")]
 position = Vector2(536, 1568)
-area_id = "Area4"
 
 [node name="Area5" parent="Áreas" node_paths=PackedStringArray("enemies") instance=ExtResource("18_yx72o")]
 position = Vector2(1024, 1568)
-area_id = "Area5"
 enemies = [NodePath("../../inimigos/enemy3")]
 
 [node name="Area6" parent="Áreas" node_paths=PackedStringArray("enemies") instance=ExtResource("18_yx72o")]
 position = Vector2(1504, 1568)
-area_id = "Area6"
 enemies = [NodePath("../../inimigos/enemy4")]
 
 [node name="Area7" parent="Áreas" instance=ExtResource("18_yx72o")]
 position = Vector2(536, 2056)
-area_id = "Area7"
 
 [node name="Area8" parent="Áreas" node_paths=PackedStringArray("enemies") instance=ExtResource("18_yx72o")]
 position = Vector2(1016, 2056)
-area_id = "Area8"
 enemies = [NodePath("../../inimigos/enemy5"), NodePath("../../inimigos/enemy6")]
 
 [node name="Area9" parent="Áreas" node_paths=PackedStringArray("enemies") instance=ExtResource("18_yx72o")]
 position = Vector2(1504, 2056)
-area_id = "Area9"
 enemies = [NodePath("../../inimigos/enemy7")]

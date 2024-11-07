@@ -47,7 +47,12 @@ func _on_aura_entered(area: Area2D) -> void:
 		areas[area.name] = true  # Marca a área como prócima
 		print_area_states()
 	if area.has_method("activate_enemies"):
+		print("tem metodo")
 		area.activate_enemies()  # Ativa os inimigos na área
+	
+	#for inimigo in inimigos:
+	#	if inimigo.Area == area.name:
+			
 
 # Função chamada quando a aura detecta a saída em uma área
 func _on_aura_exited(area: Area2D) -> void:

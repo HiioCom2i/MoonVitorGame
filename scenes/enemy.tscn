@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://jd3swljpxcl4" path="res://prefabs/hitbox.tscn" id="3_astn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhboc"]
-size = Vector2(73.5, 34)
+size = Vector2(71.75, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukmka"]
-size = Vector2(50.125, 22)
+size = Vector2(40, 41)
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -20,7 +20,7 @@ scale = Vector2(1.54, 1.57692)
 texture = ExtResource("2_7jehb")
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -2)
+position = Vector2(-1.875, -4)
 shape = SubResource("RectangleShape2D_lhboc")
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -28,5 +28,5 @@ shape = SubResource("RectangleShape2D_lhboc")
 [node name="hitbox" parent="." instance=ExtResource("3_astn8")]
 
 [node name="collision" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(-15.0625, -1)
+position = Vector2(18, -3.5)
 shape = SubResource("RectangleShape2D_ukmka")
