@@ -3,6 +3,8 @@ class_name BaseCharacter
 
 @export_category("Variables")
 @export var _move_speed: float
+@onready var anim := $anim as AnimatedSprite2D
+var vida = 5
 
 # Variável de direção para movimentação
 var _direction: Vector2
@@ -32,6 +34,10 @@ func _physics_process(_delta: float) -> void:
 	
 	# Define a velocidade com base na direção e velocidade de movimento
 	velocity = _direction * _move_speed
+	if _direction.x == 1:
+		anim.flip_h = true
+	if _direction.x == -1:
+		anim.flip_h = false
 	move_and_slide()
 
 # Função chamada quando a aura detecta a entrada em uma área

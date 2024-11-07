@@ -1,47 +1,46 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3uqtay0vxr23"]
+[gd_scene load_steps=11 format=3 uid="uid://d3uqtay0vxr23"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_wtnfe"]
-[ext_resource type="Texture2D" uid="uid://bmc3bpfvxl2ks" path="res://assets/personagens/sapoSamurai/sapoSamurai.png" id="2_pjwiv"]
+[ext_resource type="Texture2D" uid="uid://dfiixkf0ta1wr" path="res://assets/personagens/sapoSamurai/sapoFODA.png" id="2_a7seg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmhsq"]
+atlas = ExtResource("2_a7seg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b0qu"]
+atlas = ExtResource("2_a7seg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkra8"]
+atlas = ExtResource("2_a7seg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvtnb"]
+atlas = ExtResource("2_a7seg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_71qle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmhsq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b0qu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkra8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvtnb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nadl3"]
 radius = 18.0
-
-[sub_resource type="Animation" id="Animation_vr06k"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_h0po7"]
-resource_name = "idle"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 2), Vector2(0, -2)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wca4f"]
-_data = {
-"RESET": SubResource("Animation_vr06k"),
-"idle": SubResource("Animation_h0po7")
-}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7or8"]
 radius = 78.0064
@@ -54,19 +53,17 @@ position = Vector2(626, 457)
 collision_mask = 22
 script = ExtResource("1_wtnfe")
 
-[node name="texture" type="Sprite2D" parent="."]
-texture = ExtResource("2_pjwiv")
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_71qle")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.432642
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_nadl3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="anim" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_wca4f")
-}
 
 [node name="Aura_sapo" type="Area2D" parent="."]
 visible = false

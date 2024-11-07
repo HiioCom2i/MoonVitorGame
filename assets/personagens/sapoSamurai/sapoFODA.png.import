@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmc3bpfvxl2ks"
-path="res://.godot/imported/sapoSamurai.png-5f500c00354480f7e4b21856cd3b4ae5.ctex"
+uid="uid://dfiixkf0ta1wr"
+path="res://.godot/imported/sapoFODA.png-56bf974616583ae3013b0d126f15c5b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/personagens/sapoSamurai/sapoSamurai.png"
-dest_files=["res://.godot/imported/sapoSamurai.png-5f500c00354480f7e4b21856cd3b4ae5.ctex"]
+source_file="res://assets/personagens/sapoSamurai/sapoFODA.png"
+dest_files=["res://.godot/imported/sapoFODA.png-56bf974616583ae3013b0d126f15c5b8.ctex"]
 
 [params]
 
