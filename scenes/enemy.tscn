@@ -1,11 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://dftrlq3p3rof2"]
+[gd_scene load_steps=10 format=3 uid="uid://dftrlq3p3rof2"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_k4h3b"]
 [ext_resource type="Texture2D" uid="uid://cxqpegfo65oqr" path="res://assets/personagens/inimigos/inimigo1/inimigoMaisPerigosoRemake1.png" id="2_7jehb"]
+[ext_resource type="Texture2D" uid="uid://ch8ivm7dc3kkx" path="res://assets/personagens/inimigos/inimigo1/inimigoMaisPerigosoRemake2.png" id="3_aqfiy"]
 [ext_resource type="PackedScene" uid="uid://jd3swljpxcl4" path="res://prefabs/hitbox.tscn" id="3_astn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhboc"]
 size = Vector2(71.75, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilg1f"]
+atlas = ExtResource("2_7jehb")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8tva"]
+atlas = ExtResource("3_aqfiy")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ottf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilg1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8tva")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukmka"]
 size = Vector2(40, 41)
@@ -15,6 +38,7 @@ collision_layer = 2
 script = ExtResource("1_k4h3b")
 
 [node name="texture" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(16, -5)
 scale = Vector2(1.54, 1.57692)
 texture = ExtResource("2_7jehb")
@@ -24,6 +48,12 @@ position = Vector2(-1.875, -4)
 shape = SubResource("RectangleShape2D_lhboc")
 
 [node name="anim" type="AnimationPlayer" parent="."]
+
+[node name="textures" type="AnimatedSprite2D" parent="."]
+position = Vector2(15, -5)
+scale = Vector2(1.5125, 1.5125)
+sprite_frames = SubResource("SpriteFrames_8ottf")
+frame_progress = 0.616729
 
 [node name="hitbox" parent="." instance=ExtResource("3_astn8")]
 

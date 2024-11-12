@@ -3,11 +3,10 @@ class_name BaseCharacter
 
 @export_category("Variables")
 @export var _move_speed: float
-@onready var anim := $anim as AnimatedSprite2D
-var vida = 5
+@onready var anim := $idle_anim as AnimatedSprite2D
 
-# Variável de direção para movimentação
-var _direction: Vector2
+
+var _direction: Vector2 # Variável de direção para movimentação
 
 # Dicionário para armazenar o estado de cada área
 var areas = {
@@ -23,9 +22,16 @@ var areas = {
 }
 
 func _ready() -> void:
-	# Conecta o sinal da aura para detecção de proximidade
+	# Conecta o sinal da aura para detecção de proximidade das áreas
 	$Aura_sapo.connect("area_entered", Callable(self, "_on_aura_entered"))
 	$Aura_sapo.connect("area_exited", Callable(self, "_on_aura_exited"))
+	
+	# Conecta o sinal da aura para o spawn de inimigos
+	$Aura_sapo_distancia.connect("area_entered", Callable(self, "_on_area_entered"))
+	
+	# Conectar o sinal "animation_finished" para saber quando o ataque termina
+	$ataque_anim.connect("animation_finished", Callable(self, "_on_attack_animation_finished"))
+
 
 # Função para lidar com a movimentação do personagem
 func _physics_process(_delta: float) -> void:
@@ -36,32 +42,31 @@ func _physics_process(_delta: float) -> void:
 	velocity = _direction * _move_speed
 	if _direction.x == 1:
 		anim.flip_h = true
+		$ataque_anim.flip_h = true # Flip da animação de ataque (atualmente invisível)
 	if _direction.x == -1:
 		anim.flip_h = false
+		$ataque_anim.flip_h = false # Flip da animação de ataque (atualmente invisível)
 	move_and_slide()
 
 # Função chamada quando a aura detecta a entrada em uma área
 func _on_aura_entered(area: Area2D) -> void:
 	# Verifica se a área detectada está no dicionário
 	if areas.has(area.name):
-		areas[area.name] = true  # Marca a área como prócima
+		areas[area.name] = true  # Marca a área como próxima
+		for ini in area.enemies:
+			print("inimigos dentro dessa área: " + ini.name)
 		print_area_states()
 	if area.has_method("activate_enemies"):
-		print("tem metodo")
-		area.activate_enemies()  # Ativa os inimigos na área
-	
-	#for inimigo in inimigos:
-	#	if inimigo.Area == area.name:
-			
+		area.activate_enemies()  # Ativa estado de perseguição
+		print("inimigos ativados")
 
 # Função chamada quando a aura detecta a saída em uma área
 func _on_aura_exited(area: Area2D) -> void:
 	# Verifica se a área detectada está no dicionário
 	if areas.has(area.name):
 		areas[area.name] = false  # Marca a área como distante
-		print_area_states()
 	if area.has_method("deactivate_enemies"):
-		area.deactivate_enemies()  # Ativa os inimigos na área
+		area.deactivate_enemies()  # Desativa os inimigos na área
 
 # Função para exibir o estado atual de todas as áreas
 func print_area_states() -> void:
@@ -71,3 +76,16 @@ func print_area_states() -> void:
 	print()
 	print()	
 		
+
+# Função para iniciar a animação de ataque
+func play_attack_animation():
+	$idle_anim.visible = false   # Desativar idle
+	$ataque_anim.visible = true  # Ativar ataque
+	$ataque_anim.play("default") # Tocar a animação de ataque uma vez
+	
+
+# Função chamada quando a animação de ataque termina ()
+func _on_attack_animation_finished():
+	$ataque_anim.visible = false  # Desativar ataque
+	$idle_anim.visible = true     # Reativar idle
+	$idle_anim.play("default")    # Tocar a animação de idle
