@@ -1,6 +1,5 @@
-Alunos:
-Davi Barbosa Gibson
-Matheus André da Paz Silva
+COLABORADORES:
+Davi Barbosa Gibson & Matheus André da Paz Silva
 
-Execução:
+EXECUÇÃO:
 Para rodar basta abrir o arquivo "project.godot" no gerenciador de projetos do Godot.
