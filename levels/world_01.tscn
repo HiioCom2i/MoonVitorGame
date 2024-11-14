@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cdl4ylgsdjo3j" path="res://assets/ambiente/chao e flores/pixil-frame-0.png" id="9_jds1w"]
 [ext_resource type="PackedScene" uid="uid://dftrlq3p3rof2" path="res://scenes/enemy.tscn" id="9_laji4"]
 [ext_resource type="PackedScene" uid="uid://bd0dk01lgap8a" path="res://scenes/vida.tscn" id="9_qh0l0"]
-[ext_resource type="PackedScene" uid="uid://d3uqtay0vxr23" path="res://player.tscn" id="10_rtpl1"]
+[ext_resource type="PackedScene" uid="uid://d3uqtay0vxr23" path="res://scenes/player.tscn" id="10_rtpl1"]
 [ext_resource type="Texture2D" uid="uid://dyu7ne7yonxmk" path="res://assets/itens/kit-medico.png" id="10_wpbnu"]
 [ext_resource type="PackedScene" uid="uid://c7w4asngbdhj1" path="res://scenes/ataque.tscn" id="15_87lsr"]
 [ext_resource type="Texture2D" uid="uid://cf1261xnqgdxn" path="res://assets/itens/ataque-lingua.png" id="15_jsj4y"]

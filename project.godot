@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="cabaJoaoVitorBoosFoda"
+config/name="Projeto_IA_Jogos"
 run/main_scene="res://levels/world_01.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"

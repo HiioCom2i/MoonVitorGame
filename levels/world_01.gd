@@ -37,9 +37,9 @@ func _ready():
 	for enemy_info in enemy_data:
 		create_enemy_spawn_box(enemy_info["position"])
 	
-	iniciando_vidas_ataques() # Inicia os itens de vida e ataque
+	iniciando_vidas_e_ataques() # Inicia os itens de vida e ataque
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void: # Função pra definir os comandos das binds
 	if Input.is_action_just_pressed("use_medkit"):    # Input "g"   
 		iniciando_comando_cura()
 	if Input.is_action_just_pressed("attack"):    # Input "e"   
@@ -99,16 +99,7 @@ func spawn_enemy(enemy_info: Dictionary):
 	$inimigos.add_child(enemy_instance)
 	print("Inimigo recriado: " + enemy_instance.name)
 
-	# Checar e configurar o `AnimatedSprite2D` após adicionar o inimigo
-	var animated_sprite = enemy_instance.get_node("textures")
-	
-
-	if animated_sprite != null:
-		animated_sprite.frame = 0  # Inicializa com o quadro de patrulha
-	else:
-		print("Erro: AnimatedSprite2D ainda é nulo após reinstanciação")
-
-	# Atribuir nova área ao inimigo e adicionar ao nó "Áreas"
+	# Atribuir inimigo à sua área original
 	for area in $"Áreas".get_children():
 		if area.name == enemy_instance.area.name:
 			area.add_enemy(enemy_instance)  # Associa o inimigo à área encontrada
@@ -123,7 +114,7 @@ func spawn_enemy(enemy_info: Dictionary):
 	for ini in $inimigos.get_children():
 		print("inimigo: " + ini.name)
 
-func iniciando_vidas_ataques() -> void:
+func iniciando_vidas_e_ataques() -> void:
 	# Conectando o sinal de cada vida ao método que atualiza seu contador
 	for vidas in $vidas.get_children():  # Todas vidas estão no Node2D 'vidas'
 		vidas.connect("life_collected", Callable(self, "_on_life_collected"))
