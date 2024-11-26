@@ -21,7 +21,6 @@ func _ready():
 	limDir = initial_position.x + 150
 	player = get_tree().get_root().get_node("world-01/player")
 	reset_enemy()  # Chama a função de reset ao iniciar
-	# Redefine `animated_sprite` para garantir que está acessando o novo nó:
 	animated_sprite = $textures if has_node("textures") else null
 
 func reset_enemy():
@@ -47,19 +46,8 @@ func stop_chasing() -> void:
 		animated_sprite.frame = 0
 
 func _physics_process(delta: float) -> void:
-	if !animated_sprite:  # Verifique se o `animated_sprite` ainda é válido
-		print("animated sprite é null")
-		return
-
 	if is_chasing:
-		var direction_to_player = (player.position - position).normalized()
-		velocity = direction_to_player * CHASE_SPEED
-		if (player.position.x - position.x) > 0: # Player está na direita do inimigo
-			if direction == -1:
-				animated_sprite.flip_h = true
-		else: # Player está na esquerda 
-			if direction == 1:
-				animated_sprite.flip_h = false
+		chase(delta)
 	else:
 		patrol(delta)
 	move_and_slide()
@@ -74,4 +62,13 @@ func patrol(delta: float) -> void:
 		elif position.x >= limDir:
 			direction = -1
 			animated_sprite.flip_h = false
-			
+
+func chase(delta: float) -> void:
+	var direction_to_player = (player.position - position).normalized()
+	velocity = direction_to_player * CHASE_SPEED
+	if (player.position.x - position.x) > 0: # Player está na direita do inimigo
+		if direction == -1:
+			animated_sprite.flip_h = true
+	else: # Player está na esquerda 
+		if direction == 1:
+			animated_sprite.flip_h = false

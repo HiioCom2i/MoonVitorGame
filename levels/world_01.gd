@@ -2,8 +2,8 @@ extends Node2D
 
 @export var enemy_scene: PackedScene  # A cena base do inimigo
 @onready var player := $player  # Referência ao jogador
-@onready var aura_spawn_de_ini := $player/Aura_sapo_distancia  # Referência à aura do jogador
-@onready var aura_prox_area := $player/Aura_sapo  # Referência à aura do jogador
+@onready var aura_spawn_de_ini := $player/Aura_sapo_distancia  # Aura do jogador que detecta sua proximidade aos inimigos
+@onready var aura_prox_area := $player/Aura_sapo  # Aura do jogador que detecta sua proximidade às áreas
 @onready var world := get_parent()  # Referência ao nó pai (World_01)
 
 var medkits = 1    # usados para recuperar corações
