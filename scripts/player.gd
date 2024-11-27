@@ -7,6 +7,9 @@ class_name BaseCharacter
 
 
 var _direction: Vector2 # Variável de direção para movimentação
+var vida = 5
+@onready var hurtbox := $hurtbox as Area2D
+
 
 # Dicionário para armazenar o estado de cada área
 var areas = {
@@ -31,6 +34,8 @@ func _ready() -> void:
 	
 	# Conectar o sinal "animation_finished" para saber quando o ataque termina
 	$ataque_anim.connect("animation_finished", Callable(self, "_on_attack_animation_finished"))
+	
+	
 
 
 # Função para lidar com a movimentação do personagem
@@ -89,3 +94,7 @@ func _on_attack_animation_finished():
 	$ataque_anim.visible = false  # Desativar ataque
 	$idle_anim.visible = true     # Reativar idle
 	$idle_anim.play("default")    # Tocar a animação de idle
+	
+func is_death() -> void:
+	if vida <= 0:
+		queue_free()

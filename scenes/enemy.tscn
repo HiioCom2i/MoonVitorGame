@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dftrlq3p3rof2"]
+[gd_scene load_steps=11 format=3 uid="uid://dftrlq3p3rof2"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_k4h3b"]
 [ext_resource type="Texture2D" uid="uid://cxqpegfo65oqr" path="res://assets/personagens/inimigos/inimigo1/inimigoMaisPerigosoRemake1.png" id="2_7jehb"]
@@ -30,6 +30,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cl5iq"]
+radius = 38.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukmka"]
 size = Vector2(40, 41)
 
@@ -44,6 +47,7 @@ scale = Vector2(1.54, 1.57692)
 texture = ExtResource("2_7jehb")
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1.875, -4)
 shape = SubResource("RectangleShape2D_lhboc")
 
@@ -53,10 +57,24 @@ shape = SubResource("RectangleShape2D_lhboc")
 position = Vector2(15, -5)
 scale = Vector2(1.5125, 1.5125)
 sprite_frames = SubResource("SpriteFrames_8ottf")
-frame_progress = 0.616729
+frame_progress = 0.925804
+
+[node name="enemyAttackArea" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="attackTimer" type="Timer" parent="enemyAttackArea"]
+wait_time = 3.0
+one_shot = true
+
+[node name="collision" type="CollisionShape2D" parent="enemyAttackArea"]
+position = Vector2(-28, -22)
+shape = SubResource("CircleShape2D_cl5iq")
 
 [node name="hitbox" parent="." instance=ExtResource("3_astn8")]
 
 [node name="collision" type="CollisionShape2D" parent="hitbox"]
+visible = false
 position = Vector2(18, -3.5)
 shape = SubResource("RectangleShape2D_ukmka")
+
+[connection signal="timeout" from="enemyAttackArea/attackTimer" to="." method="_on_attack_timer_timeout"]

@@ -8,7 +8,6 @@ extends Node2D
 
 var medkits = 1    # usados para recuperar corações
 var attacks = 2    # usado para atacar
-var player_hearts = 5    # a vida do jogador
 var enemy_data = []  # Lista para armazenar informações dos inimigos
 
 func _ready():
@@ -135,10 +134,13 @@ func _on_attack_collected():
 
 func iniciando_comando_cura() -> void:
 	if medkits > 0:
-		player_hearts += 1
+		player.vida += 1
 		medkits -= 1
 		$HUD/container_vida/Controle2/contador_vidas.text = " x " + str(medkits)
-		$HUD/container_vida_persongem/Controle2/contador_coracoes.text = " x " + str(player_hearts)
+		$HUD/container_vida_persongem/Controle2/contador_coracoes.text = " x " + str(player.vida)
+func damage_received() -> void:
+		$HUD/container_vida_persongem/Controle2/contador_coracoes.text = " x " + str(player.vida)
+		
 
 func iniciando_comando_ataque() -> void:
 	if attacks > 0:
