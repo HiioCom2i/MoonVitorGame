@@ -72,3 +72,7 @@ func chase(delta: float) -> void:
 	else: # Player está na esquerda 
 		if direction == 1:
 			animated_sprite.flip_h = false
+
+func is_player_nearby() -> bool:
+	return is_chasing
+	
