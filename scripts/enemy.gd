@@ -12,6 +12,7 @@ var limDir: float # Limite de patrulha
 var direction := -1 # Direção - Esquerda: -1 Direita: 1
 var initial_position: Vector2 
 var is_chasing := false 
+var is_in_range := false
 var vivo = true
 # Referência para o jogador e para o world_01
 var player: BaseCharacter
@@ -94,6 +95,11 @@ func attack() -> void:
 func _on_attack_timer_timeout() -> void:
 	canAttack = true
 	
-
+func is_in_attack_range() -> bool:
+	return is_in_range
 	
+func is_player_alive() -> bool:
+	if player.is_valid() and player.vida > 0:
+		return true
+	return false
 	
