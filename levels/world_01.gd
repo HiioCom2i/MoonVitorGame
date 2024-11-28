@@ -138,7 +138,8 @@ func iniciando_comando_cura() -> void:
 		medkits -= 1
 		$HUD/container_vida/Controle2/contador_vidas.text = " x " + str(medkits)
 		$HUD/container_vida_persongem/Controle2/contador_coracoes.text = " x " + str(player.vida)
-func damage_received() -> void:
+
+func update_player_hearts() -> void:
 		$HUD/container_vida_persongem/Controle2/contador_coracoes.text = " x " + str(player.vida)
 
 

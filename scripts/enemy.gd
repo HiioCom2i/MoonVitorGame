@@ -38,7 +38,6 @@ func _ready():
 	creating_enemy_behavior_tree() # Função que estrutura os nós da árvore de comportamento
 
 
-	
 func reset_enemy():
 	is_chasing = false
 	direction = -1
@@ -68,8 +67,6 @@ func _physics_process(delta: float) -> void:
 		is_in_range = enemyAttackArea.overlaps_area(player.hurtbox)
 	else:
 		is_in_range = false  # Caso o jogador não exista ou não tenha a hitbox, não há sobreposição
-
-	
 	# Chamar o comportamento baseado na árvore de comportamento
 	root_node_enemy_behavior.tick(self)  # Atualiza a árvore de comportamento com o "agent" sendo o inimigo
 	
@@ -111,18 +108,15 @@ func attack() -> int:
 		player.is_death()
 		$enemyAttackArea/attackTimer.start(1.0)
 		print("Inimigo atacou! Vida do jogador: ", player.vida)
-		worldReference.damage_received()
+		worldReference.update_player_hearts()
 		return BehaviorNode.Status.SUCCESS
 	return BehaviorNode.Status.FAILURE
 
 func _on_attack_timer_timeout() -> void: canAttack = true
 
 func is_player_nearby() -> bool: return is_chasing
-
 func is_player_distant() -> bool: return not is_chasing
-
 func is_in_attack_range() -> bool: return is_in_range
-
 func is_player_alive() -> bool:
 	if player != null and player.vida > 0:
 		return true
@@ -130,11 +124,8 @@ func is_player_alive() -> bool:
 
 # Wrappers necessários para a estrutura de SUCCESS, FAILURE e RUNNING funcionarem com funções daqui
 func is_player_nearby_wrapper(agent) -> bool: return is_player_nearby()
-
 func is_player_distant_wrapper(agent) -> bool: return is_player_distant()
-
 func is_player_alive_wrapper(agent) -> bool: return is_player_alive()
-
 func is_in_attack_range_wrapper(agent) -> bool: return is_in_attack_range()
 
 func attack_wrapper(agent) -> int:
