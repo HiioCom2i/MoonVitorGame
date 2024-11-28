@@ -1,5 +1,14 @@
 extends CharacterBody2D
 
+# Importando as classes dos nós de comportamento
+const BehaviorNode = preload("res://scripts/behavior_tree/behavior_node.gd")
+const SequenceNode = preload("res://scripts/behavior_tree/sequence_node.gd")
+const ConditionNode = preload("res://scripts/behavior_tree/condition_node.gd")
+const ActionNode = preload("res://scripts/behavior_tree/action_node.gd")
+const WhileFailDecorator = preload("res://scripts/behavior_tree/while_fail_decorator.gd")
+const WhileSuccessDecorator = preload("res://scripts/behavior_tree/while_success_decorator.gd")
+
+
 @onready var animated_sprite := $AnimatedSprite2D  # Referência ao AnimatedSprite2D
 @onready var enemyAttackArea := $enemyAttackArea as Area2D
 @onready var worldReference = get_tree().get_root().get_node("world-01")
@@ -25,6 +34,8 @@ func _ready():
 	player = get_tree().get_root().get_node("world-01/player")
 	reset_enemy()  # Chama a função de reset ao iniciar
 	animated_sprite = $textures if has_node("textures") else null
+	
+	var node_action_patrol = ActionNode.new(Callable(self, "patrol"))
 	
 func reset_enemy():
 	is_chasing = false
@@ -90,7 +101,6 @@ func attack() -> void:
 		canAttack = false
 		player.is_death()
 		$enemyAttackArea/attackTimer.start(1.0)
-	
 
 func _on_attack_timer_timeout() -> void:
 	canAttack = true
