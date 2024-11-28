@@ -140,7 +140,7 @@ func iniciando_comando_cura() -> void:
 		$HUD/container_vida_persongem/Controle2/contador_coracoes.text = " x " + str(player.vida)
 func damage_received() -> void:
 		$HUD/container_vida_persongem/Controle2/contador_coracoes.text = " x " + str(player.vida)
-		
+
 
 func iniciando_comando_ataque() -> void:
 	if attacks > 0:

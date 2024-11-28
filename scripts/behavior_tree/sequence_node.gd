@@ -4,6 +4,9 @@ class_name SequenceNode
 
 var children: Array = []
 
+func _init(child_nodes: Array):
+	children = child_nodes
+
 func tick(agent) -> int:
 	for child in children:
 		var status = child.tick(agent)
