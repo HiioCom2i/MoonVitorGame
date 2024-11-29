@@ -8,8 +8,11 @@ class_name BaseCharacter
 
 var _direction: Vector2 # Variável de direção para movimentação
 var vida = 5
+var medKit = 1
+var attack = 2
+var canAttack = false
 @onready var hurtbox := $hurtbox as Area2D
-
+@onready var auraSapo := $Aura_sapo_distancia as Area2D
 
 # Dicionário para armazenar o estado de cada área
 var areas = {
@@ -87,14 +90,19 @@ func play_attack_animation():
 	$idle_anim.visible = false   # Desativar idle
 	$ataque_anim.visible = true  # Ativar ataque
 	$ataque_anim.play("default") # Tocar a animação de ataque uma vez
+	canAttack = true
 	
 
 # Função chamada quando a animação de ataque termina ()
 func _on_attack_animation_finished():
 	$ataque_anim.visible = false  # Desativar ataque
+	canAttack = false
 	$idle_anim.visible = true     # Reativar idle
 	$idle_anim.play("default")    # Tocar a animação de idle
 	
 func is_death() -> void:
 	if vida <= 0:
 		queue_free()
+		
+
+		

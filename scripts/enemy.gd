@@ -95,14 +95,15 @@ func chase(delta: float) -> int:
 	if (player.position.x - position.x) > 0: # Player está na direita
 		if direction == -1:
 			animated_sprite.flip_h = true
+			enemyAttackArea.scale.x = 1
 	else: # Player está na esquerda
 		if direction == 1:
 			animated_sprite.flip_h = false
-	
+			enemyAttackArea.scale.x = -1
 	return BehaviorNode.Status.SUCCESS
 
 func attack() -> int:
-	if canAttack:
+	if canAttack and vivo:
 		player.vida -= 1
 		canAttack = false
 		player.is_death()

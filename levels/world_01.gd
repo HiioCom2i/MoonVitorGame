@@ -6,8 +6,7 @@ extends Node2D
 @onready var aura_prox_area := $player/Aura_sapo  # Aura do jogador que detecta sua proximidade às áreas
 @onready var world := get_parent()  # Referência ao nó pai (World_01)
 
-var medkits = 1    # usados para recuperar corações
-var attacks = 2    # usado para atacar
+	# usado para atacar
 var enemy_data = []  # Lista para armazenar informações dos inimigos
 
 func _ready():
@@ -123,20 +122,20 @@ func iniciando_vidas_e_ataques() -> void:
 		print("sinal de ataque conectado") 
 
 func _on_life_collected():
-	medkits += 1
-	print("vidas coletadas " + str(medkits))
-	$HUD/container_vida/Controle2/contador_vidas.text = " x " + str(medkits)
+	player.medKit += 1
+	print("vidas coletadas " + str(player.medKit))
+	$HUD/container_vida/Controle2/contador_vidas.text = " x " + str(player.medKit)
 
 func _on_attack_collected():
-	attacks += 1
-	print("ataques coletado " + str(attacks))
-	$HUD/container_ataque/Controle2/contador_ataques.text = " x " + str(attacks)
+	player.attack += 1
+	print("ataques coletado " + str(player.attack))
+	$HUD/container_ataque/Controle2/contador_ataques.text = " x " + str(player.attack)
 
 func iniciando_comando_cura() -> void:
-	if medkits > 0:
+	if player.medKit > 0:
 		player.vida += 1
-		medkits -= 1
-		$HUD/container_vida/Controle2/contador_vidas.text = " x " + str(medkits)
+		player.medKit-= 1
+		$HUD/container_vida/Controle2/contador_vidas.text = " x " + str(player.medKit)
 		$HUD/container_vida_persongem/Controle2/contador_coracoes.text = " x " + str(player.vida)
 
 func update_player_hearts() -> void:
@@ -144,7 +143,7 @@ func update_player_hearts() -> void:
 
 
 func iniciando_comando_ataque() -> void:
-	if attacks > 0:
+	if player.attack > 0:
 		player.play_attack_animation()
-		attacks -= 1
-		$HUD/container_ataque/Controle2/contador_ataques.text = " x " + str(attacks)
+		player.attack -= 1
+		$HUD/container_ataque/Controle2/contador_ataques.text = " x " + str(player.attack)

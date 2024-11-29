@@ -130,6 +130,7 @@ shape = SubResource("CircleShape2D_nadl3")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Aura_sapo" type="Area2D" parent="."]
+collision_mask = 5
 
 [node name="circulo" type="CollisionShape2D" parent="Aura_sapo"]
 visible = false
