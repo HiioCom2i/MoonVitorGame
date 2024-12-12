@@ -61,8 +61,8 @@ func _on_aura_entered(area: Area2D) -> void:
 	# Verifica se a área detectada está no dicionário
 	if areas.has(area.name):
 		areas[area.name] = true  # Marca a área como próxima
-		for ini in area.enemies:
-			print("inimigos dentro dessa área: " + ini.name)
+		#for ini in area.enemies:
+			#print("inimigos dentro dessa área: " + ini.name)
 		print_area_states()
 	if area.has_method("activate_enemies"):
 		area.activate_enemies()  # Ativa estado de perseguição
@@ -82,7 +82,7 @@ func print_area_states() -> void:
 		print(str(i) + ": " + str(areas["Area" + str(i)]))
 	print()
 	print()
-	print()	
+	print()
 		
 
 # Função para iniciar a animação de ataque

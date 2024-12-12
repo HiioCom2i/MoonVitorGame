@@ -124,7 +124,6 @@ frame = 11
 frame_progress = 1.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_nadl3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -146,10 +145,10 @@ scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_wvy7y")
 
 [node name="hurtbox" type="Area2D" parent="."]
+visible = false
 collision_mask = 4
 
 [node name="collision" type="CollisionShape2D" parent="hurtbox"]
-visible = false
 position = Vector2(1, 6)
 shape = SubResource("RectangleShape2D_n7drs")
 debug_color = Color(0.965428, 0, 0.486758, 0.42)

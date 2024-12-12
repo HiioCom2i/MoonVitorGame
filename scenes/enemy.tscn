@@ -31,7 +31,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cl5iq"]
-radius = 38.0
+radius = 46.0109
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukmka"]
 size = Vector2(40, 41)
@@ -67,7 +67,8 @@ wait_time = 3.0
 one_shot = true
 
 [node name="collision" type="CollisionShape2D" parent="enemyAttackArea"]
-position = Vector2(-28, -22)
+visible = false
+position = Vector2(-20, -2)
 shape = SubResource("CircleShape2D_cl5iq")
 
 [node name="hitbox" parent="." instance=ExtResource("3_astn8")]
