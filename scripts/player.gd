@@ -103,6 +103,3 @@ func _on_attack_animation_finished():
 func is_death() -> void:
 	if vida <= 0:
 		queue_free()
-		
-
-		
