@@ -9,7 +9,7 @@ class_name BaseCharacter
 var _direction: Vector2 # Variável de direção para movimentação
 var vida = 5
 var medKit = 1
-var attack = 2
+@onready var attack = 2
 var canAttack = false
 @onready var hurtbox := $hurtbox as Area2D
 @onready var auraSapo := $Aura_sapo_distancia as Area2D
@@ -37,9 +37,9 @@ func _ready() -> void:
 	
 	# Conectar o sinal "animation_finished" para saber quando o ataque termina
 	$ataque_anim.connect("animation_finished", Callable(self, "_on_attack_animation_finished"))
-	
-	
 
+func get_attack() -> int:
+	return attack
 
 # Função para lidar com a movimentação do personagem
 func _physics_process(_delta: float) -> void:
@@ -102,4 +102,5 @@ func _on_attack_animation_finished():
 	
 func is_death() -> void:
 	if vida <= 0:
+		print("Player Morreu")
 		queue_free()

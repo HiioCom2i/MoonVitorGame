@@ -91,7 +91,6 @@ func spawn_enemy(enemy_info: Dictionary):
 		if child.name == "EnemySpawnArea_" + str(enemy_instance.position):
 			$inimigos.remove_child(child)
 			child.queue_free()
-			print("Área de detecção antiga removida para inimigo: " + enemy_instance.name)
 
 	# Adicionar o novo inimigo ao nó `$inimigos`, necessário para trazer o nó criado para a cena
 	$inimigos.add_child(enemy_instance)
@@ -119,7 +118,6 @@ func iniciando_vidas_e_ataques() -> void:
 	# Conectando o sinal de cada ataque ao método que atualiza seu contador
 	for ataque in $ataques.get_children():  # Todos ataques estão no Node2D 'ataques'
 		ataque.connect("attack_collected", Callable(self, "_on_attack_collected"))
-		print("sinal de ataque conectado") 
 
 func _on_life_collected():
 	player.medKit += 1
