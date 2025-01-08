@@ -15,7 +15,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 4.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pjvi5"]
@@ -28,13 +28,17 @@ radius = 14.0
 height = 70.0
 
 [node name="enemyCocrodilo" type="CharacterBody2D"]
+light_mask = 0
 position = Vector2(0, 10)
+collision_layer = 4
 script = ExtResource("1_nifhn")
 
 [node name="animCocrodilo" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_s6irv")
-frame_progress = 0.309273
+frame = 1
+frame_progress = 0.936704
 
 [node name="colisaoCocrodilo" type="CollisionShape2D" parent="."]
 visible = false

@@ -15,7 +15,7 @@ var player : BaseCharacter
 var desired_velocity = Vector2.ZERO
 var distance_to_target = 0.0
 
-var stop_distance = 1.0
+var stop_distance = 35.0
 var slowing_distance = 100.0
 var safe_distance = 500.0
 
@@ -25,7 +25,7 @@ var root_node_crocodilo_behavior
 func _ready() -> void:
 	player = get_tree().get_root().get_node("world-01/player")
 	creating_behavior_nodes()
-	
+	$cocrodiloAttackArea/attackTimer.connect("timeout", Callable(self, "_on_attackTimer_timeout"))
 	if player:
 		print("PLAYER DEU BOM")
 	
@@ -36,14 +36,24 @@ func _physics_process(delta: float) -> void:
 	distance_to_target = get_distance_to_player()
 	root_node_crocodilo_behavior.tick(self)
 	move_and_slide()
+	update_rotation_to_match_direction()
+
+func update_rotation_to_match_direction() -> void:
+	if velocity.length() > 0:  # Apenas ajusta o ângulo se estiver se movendo
+		rotation = velocity.angle()
+		play_rotation_animation()
+	else:
+		$animCocrodilo.stop()
+
+func play_rotation_animation() -> void:
+	if $animCocrodilo.is_playing() == false:
+		$animCocrodilo.play("default")  # Substitua "rotate" pelo nome da animação de rotação
 
 func get_player_attacks() -> int:
 	if player != null:
-		#if "attack" in player:
 		var ataques = player.get_attack()
-		print("tem " + str(ataques) + " ataques")
 		return ataques
-		print("tem 0 ataques")
+	print("tem 0 ataques")
 	return 0  # Retorna 0 se o jogador for inválido ou não tiver o método "attack"
 
 func get_distance_to_player() -> float:
@@ -88,7 +98,7 @@ func stop(delta: float) -> int:
 	return BehaviorNode.Status.SUCCESS
 
 func attack(delta:float) -> int:
-	if canAttack and player and player.is_valid():
+	if canAttack and player:
 		player.vida -= 1
 		canAttack = false
 		player.is_death()
@@ -96,7 +106,7 @@ func attack(delta:float) -> int:
 		worldReference.update_player_hearts()
 		print("CROCODILO ATTACK SUCCESS")
 		return BehaviorNode.Status.SUCCESS
-	print("CROCODILO ATTACK FAILURE")
+	print("CROCODILO ATTACK FAILURE - canAttack: " + str(canAttack))
 	return BehaviorNode.Status.FAILURE
 
 func _on_attackTimer_timeout() -> void:
@@ -113,7 +123,7 @@ func crossed_slow_distance() -> bool:
 	print("CROCODILO CONDIÇÃO CRUZOU DIST SLOW")
 	return distance_to_target < slowing_distance
 func crossed_stop_distance() -> bool: 
-	print("CROCODILO CONDIÇÃO CRUZOU DIST STOP")
+	print("CROCODILO CONDIÇÃO CRUZOU DIST STOP " + str(distance_to_target))
 	return distance_to_target < stop_distance
 func is_in_safe_distance() -> bool: 
 	print("CROCODILO CONDIÇÃO TÁ EM DIST SEGURA")

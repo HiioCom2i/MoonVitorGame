@@ -203,7 +203,7 @@ area = NodePath("../../Áreas/Area9")
 [node name="inimigos_cocrodilos" type="Node2D" parent="."]
 
 [node name="cocrodilo1" parent="inimigos_cocrodilos" instance=ExtResource("15_re35l")]
-position = Vector2(448, 718)
+position = Vector2(816, 792)
 rotation = 4.18879
 
 [node name="HUD" type="CanvasLayer" parent="."]
