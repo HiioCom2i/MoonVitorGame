@@ -39,9 +39,9 @@ func _ready():
 
 func _process(delta: float) -> void: # Função pra definir os comandos das binds
 	if Input.is_action_just_pressed("use_medkit"):    # Input "g"   
-		iniciando_comando_cura()
+		atualizando_curas()
 	if Input.is_action_just_pressed("attack"):    # Input "e"   
-		iniciando_comando_ataque()
+		atualizando_ataques()
 
 # Função para criar uma área invisível de spawn para o inimigo
 func create_enemy_spawn_box(position: Vector2) -> void:
@@ -129,7 +129,7 @@ func _on_attack_collected():
 	print("ataques coletado " + str(player.attack))
 	$HUD/container_ataque/Controle2/contador_ataques.text = " x " + str(player.attack)
 
-func iniciando_comando_cura() -> void:
+func atualizando_curas() -> void:
 	if player.medKit > 0:
 		player.vida += 1
 		player.medKit-= 1
@@ -140,7 +140,7 @@ func update_player_hearts() -> void:
 		$HUD/container_vida_persongem/Controle2/contador_coracoes.text = " x " + str(player.vida)
 
 
-func iniciando_comando_ataque() -> void:
+func atualizando_ataques() -> void:
 	if player.attack > 0:
 		player.play_attack_animation()
 		player.attack -= 1
