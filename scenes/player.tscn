@@ -124,11 +124,14 @@ frame = 11
 frame_progress = 1.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_nadl3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 
 [node name="Aura_sapo" type="Area2D" parent="."]
+visible = false
 collision_mask = 5
 
 [node name="circulo" type="CollisionShape2D" parent="Aura_sapo"]
@@ -136,10 +139,12 @@ visible = false
 shape = SubResource("CircleShape2D_w7or8")
 
 [node name="Aura_sapo_distancia" type="Area2D" parent="."]
+visible = false
 collision_layer = 64
 collision_mask = 64
 
 [node name="circulo_distancia" type="CollisionShape2D" parent="Aura_sapo_distancia"]
+visible = false
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_wvy7y")
 
