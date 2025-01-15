@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://e6y34rfdramw" path="res://assets/ambiente/chao e flores/chaoFODAII (32x32) (euAcho).png" id="1_2oxd5"]
 [ext_resource type="Script" path="res://levels/world_01.gd" id="1_464k0"]
-[ext_resource type="Texture2D" uid="uid://cfycywapgtrnl" path="res://assets/personagens/joaoVitor/ruanVIctorejafjasaaadahah.png" id="2_hl0s3"]
 [ext_resource type="Texture2D" uid="uid://c08dvi7dk4lqt" path="res://assets/ambiente/chao e flores/aguaBonita I.png" id="2_xwtkm"]
 [ext_resource type="Texture2D" uid="uid://k8nldpuqit22" path="res://assets/ambiente/chao e flores/agorsimAgua.png" id="3_648s1"]
 [ext_resource type="Texture2D" uid="uid://jh0asbm2u83u" path="res://assets/ambiente/chao e flores/chaoQUEPREST.png" id="4_nlupo"]
@@ -14,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bd0dk01lgap8a" path="res://scenes/vida.tscn" id="9_qh0l0"]
 [ext_resource type="PackedScene" uid="uid://d3uqtay0vxr23" path="res://scenes/player.tscn" id="10_rtpl1"]
 [ext_resource type="Texture2D" uid="uid://dyu7ne7yonxmk" path="res://assets/itens/kit-medico.png" id="10_wpbnu"]
+[ext_resource type="PackedScene" uid="uid://clk6pf3dtl0ev" path="res://scenes/ruan_v_ictorejafjasaaadahah.tscn" id="12_fm0bm"]
 [ext_resource type="PackedScene" uid="uid://c7w4asngbdhj1" path="res://scenes/ataque.tscn" id="15_87lsr"]
 [ext_resource type="Texture2D" uid="uid://cf1261xnqgdxn" path="res://assets/itens/ataque-lingua.png" id="15_jsj4y"]
 [ext_resource type="PackedScene" uid="uid://dehxgwbdyn1du" path="res://scenes/enemy_cocrodilo.tscn" id="15_re35l"]
@@ -87,13 +87,12 @@ layer_2/tile_data = PackedInt32Array(1835031, 4, 1, 2359328, 4, 1, 2228240, 4, 1
 
 [node name="player" parent="." instance=ExtResource("10_rtpl1")]
 position = Vector2(525, 774)
-collision_mask = 14
+collision_mask = 78
 _move_speed = 200.0
 
-[node name="RuanVIctorejafjasaaadahah" type="Sprite2D" parent="."]
-position = Vector2(613.125, 75.75)
-scale = Vector2(7.75781, 6.60938)
-texture = ExtResource("2_hl0s3")
+[node name="RuanVIctorejafjasaaadahah" parent="." instance=ExtResource("12_fm0bm")]
+position = Vector2(596, 113)
+scale = Vector2(8.765, 8.765)
 
 [node name="vidas" type="Node2D" parent="."]
 
@@ -159,6 +158,7 @@ position = Vector2(870, 1000)
 position = Vector2(1302, 1220)
 
 [node name="ataque6" parent="ataques" instance=ExtResource("15_87lsr")]
+visible = false
 position = Vector2(584, 1622)
 
 [node name="ataque7" parent="ataques" instance=ExtResource("15_87lsr")]
@@ -214,10 +214,10 @@ anchor_left = -0.043
 anchor_top = 0.057
 anchor_right = -0.043
 anchor_bottom = 0.057
-offset_left = -7.922
-offset_top = -55.94
-offset_right = 94.078
-offset_bottom = 26.06
+offset_left = 163.536
+offset_top = -167.936
+offset_right = 265.536
+offset_bottom = -85.936
 
 [node name="Controle1" type="Control" parent="HUD/container_vida"]
 layout_mode = 2
@@ -227,10 +227,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.39
 anchor_bottom = 0.39
-offset_left = 49.0
-offset_top = -31.98
-offset_right = 107.0
-offset_bottom = 18.02
+offset_left = -123.0
+offset_top = 82.02
+offset_right = -65.0
+offset_bottom = 132.02
 scale = Vector2(2, 2)
 texture = ExtResource("10_wpbnu")
 
@@ -242,10 +242,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.39
 anchor_bottom = 0.39
-offset_left = 141.0
-offset_top = 0.0199986
-offset_right = 213.0
-offset_bottom = 47.02
+offset_left = -30.0
+offset_top = 118.02
+offset_right = 42.0
+offset_bottom = 165.02
 scale = Vector2(2, 2)
 text = " x 1"
 
