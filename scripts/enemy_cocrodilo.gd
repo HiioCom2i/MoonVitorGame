@@ -26,11 +26,6 @@ func _ready() -> void:
 	player = get_tree().get_root().get_node("world-01/player")
 	creating_behavior_nodes()
 	$cocrodiloAttackArea/attackTimer.connect("timeout", Callable(self, "_on_attackTimer_timeout"))
-	if player:
-		print("PLAYER DEU BOM")
-	
-	if !player:
-		print("PLAYER NÃO DEU BOM")
 
 func _physics_process(delta: float) -> void:
 	distance_to_target = get_distance_to_player()
@@ -53,7 +48,6 @@ func get_player_attacks() -> int:
 	if player != null:
 		var ataques = player.get_attack()
 		return ataques
-	print("tem 0 ataques")
 	return 0  # Retorna 0 se o jogador for inválido ou não tiver o método "attack"
 
 func get_distance_to_player() -> float:
@@ -69,7 +63,6 @@ func seek(delta: float) -> int:
 	var direction_to_player = (player.position - position).normalized()
 	velocity = velocity.lerp(direction_to_player * CHASE_SPEED, 0.1)
 	move_and_slide()
-	print("CROCODILO SEEK")
 	return BehaviorNode.Status.SUCCESS
 
 func flee(delta: float) -> int:
@@ -78,7 +71,6 @@ func flee(delta: float) -> int:
 	var direction_away_from_player = (position - player.position).normalized()
 	velocity = velocity.lerp(direction_away_from_player * SPEED, 0.1)
 	move_and_slide()
-	print("CROCODILO FLEE DISTÂNCIA DO ALVO = " + str(distance_to_target))
 	return BehaviorNode.Status.SUCCESS
 
 func slow(delta: float) -> int:
@@ -88,13 +80,11 @@ func slow(delta: float) -> int:
 		desired_velocity = (player.position - position).normalized() * 150.0
 	velocity = velocity.lerp(desired_velocity, delta)
 	move_and_slide()
-	print("CROCODILO SLOW DESIRED VELOCITY = " + str(desired_velocity))
 	return BehaviorNode.Status.SUCCESS
 
 func stop(delta: float) -> int:
 	velocity = Vector2.ZERO
 	move_and_slide()
-	print("CROCODILO STOP")
 	return BehaviorNode.Status.SUCCESS
 
 func attack(delta:float) -> int:
@@ -104,9 +94,7 @@ func attack(delta:float) -> int:
 		player.is_death()
 		$cocrodiloAttackArea/attackTimer.start(1.0)
 		worldReference.update_player_hearts()
-		print("CROCODILO ATTACK SUCCESS")
 		return BehaviorNode.Status.SUCCESS
-	print("CROCODILO ATTACK FAILURE - canAttack: " + str(canAttack))
 	return BehaviorNode.Status.FAILURE
 
 func _on_attackTimer_timeout() -> void:
@@ -114,22 +102,16 @@ func _on_attackTimer_timeout() -> void:
 
 # Funções de Condição
 func player_can_attack() -> bool: 
-	print("CROCODILO CONDIÇÃO TEM ATAQUE " + str(get_player_attacks() > 0))
 	return get_player_attacks() > 0 
 func player_cannot_attack() -> bool: 
-	print("CROCODILO CONDIÇÃO N TEM ATAQUE " + str(get_player_attacks() <= 0))
 	return get_player_attacks() <= 0
 func crossed_slow_distance() -> bool: 
-	print("CROCODILO CONDIÇÃO CRUZOU DIST SLOW")
 	return distance_to_target < slowing_distance
 func crossed_stop_distance() -> bool: 
-	print("CROCODILO CONDIÇÃO CRUZOU DIST STOP " + str(distance_to_target))
 	return distance_to_target < stop_distance
 func is_in_safe_distance() -> bool: 
-	print("CROCODILO CONDIÇÃO TÁ EM DIST SEGURA")
 	return distance_to_target >= safe_distance
 func is_not_in_safe_distance() -> bool: 
-	print("CROCODILO CONDIÇÃO N TÁ EM DIST SEGURA")
 	return distance_to_target < safe_distance
 
 # Wrappers das Funções de Condição
