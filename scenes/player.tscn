@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d3uqtay0vxr23"]
+[gd_scene load_steps=25 format=3 uid="uid://d3uqtay0vxr23"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_wtnfe"]
 [ext_resource type="Texture2D" uid="uid://dfiixkf0ta1wr" path="res://assets/personagens/sapoSamurai/sapoFODA.png" id="2_a7seg"]
@@ -98,10 +98,13 @@ animations = [{
 radius = 18.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7or8"]
-radius = 62.0081
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvy7y"]
 radius = 28.1336
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbi7c"]
+size = Vector2(30, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7drs"]
 size = Vector2(22, 52)
@@ -135,7 +138,6 @@ visible = false
 collision_mask = 5
 
 [node name="circulo" type="CollisionShape2D" parent="Aura_sapo"]
-visible = false
 shape = SubResource("CircleShape2D_w7or8")
 
 [node name="Aura_sapo_distancia" type="Area2D" parent="."]
@@ -147,6 +149,14 @@ collision_mask = 64
 visible = false
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_wvy7y")
+
+[node name="pe_sapo" type="Area2D" parent="."]
+position = Vector2(1, 6)
+collision_mask = 256
+
+[node name="circulo" type="CollisionShape2D" parent="pe_sapo"]
+position = Vector2(-1, 22)
+shape = SubResource("RectangleShape2D_qbi7c")
 
 [node name="hurtbox" type="Area2D" parent="."]
 visible = false

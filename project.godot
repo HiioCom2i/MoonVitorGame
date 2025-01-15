@@ -60,6 +60,9 @@ attack={
 2d_physics/layer_4="items"
 2d_physics/layer_5="hitbox"
 2d_physics/layer_6="hurtbox"
+2d_physics/layer_7="aura_sapo"
+2d_physics/layer_8="boss"
+2d_physics/layer_9="pe_do_sapo"
 
 [rendering]
 
