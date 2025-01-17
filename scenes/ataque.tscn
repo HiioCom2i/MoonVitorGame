@@ -62,6 +62,7 @@ animations = [{
 radius = 34.2345
 
 [node name="ataque" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_ryqln")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

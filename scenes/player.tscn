@@ -111,14 +111,14 @@ size = Vector2(22, 52)
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(626, 457)
-collision_mask = 22
+collision_mask = 28
 script = ExtResource("1_wtnfe")
 
 [node name="idle_anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_71qle")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.110128
+frame_progress = 0.424642
 
 [node name="ataque_anim" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -126,15 +126,13 @@ sprite_frames = SubResource("SpriteFrames_3haf0")
 frame = 11
 frame_progress = 1.0
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
+[node name="colisao" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nadl3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 
 [node name="Aura_sapo" type="Area2D" parent="."]
-visible = false
 collision_mask = 5
 
 [node name="circulo" type="CollisionShape2D" parent="Aura_sapo"]
@@ -146,20 +144,18 @@ collision_layer = 64
 collision_mask = 64
 
 [node name="circulo_distancia" type="CollisionShape2D" parent="Aura_sapo_distancia"]
-visible = false
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_wvy7y")
 
 [node name="pe_sapo" type="Area2D" parent="."]
 position = Vector2(1, 6)
-collision_mask = 256
+collision_mask = 258
 
 [node name="circulo" type="CollisionShape2D" parent="pe_sapo"]
 position = Vector2(-1, 22)
 shape = SubResource("RectangleShape2D_qbi7c")
 
 [node name="hurtbox" type="Area2D" parent="."]
-visible = false
 collision_mask = 4
 
 [node name="collision" type="CollisionShape2D" parent="hurtbox"]
