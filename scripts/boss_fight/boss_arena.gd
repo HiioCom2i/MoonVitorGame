@@ -1,7 +1,9 @@
 extends Node2D
 
 @onready var player := $player  # Referência ao jogador
-@onready var attack_spawn_area := $attackSpawnArea
+@onready var attack_spawn_area := $spawnArea
+
+@onready var area_de_spawn : Node2D = $spawnArea # PODE REMOVER
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("use_medkit"):    # Input "g"   
 		atualizando_curas()
+		area_de_spawn.spawn_star_areas()
 	if Input.is_action_just_pressed("attack"):    # Input "e"   
 		atualizando_ataques()
 
@@ -24,7 +27,7 @@ func iniciando_vidas_e_ataques() -> void:
 
 func iniciando_ataques() -> void:
 	# Conectando o sinal de cada ataque ao método que atualiza seu contador
-	for ataque in $attackSpawnArea/listaAtaques.get_children():  # Todos ataques estão no Node2D 'ataques'
+	for ataque in $spawnArea/listaAtaques.get_children():  # Todos ataques estão no Node2D 'ataques'
 		ataque.connect("attack_collected", Callable(self, "_on_attack_collected"))
 
 func _on_life_collected():

@@ -1,4 +1,4 @@
-class_name Goal
+class_name GOAPGoal
 extends Resource
 
 # Propriedades do objetivo

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bd0dk01lgap8a"]
 
-[ext_resource type="Script" path="res://scripts/vida.gd" id="1_fu3uy"]
+[ext_resource type="Script" path="res://scripts/coletaveis/vida.gd" id="1_fu3uy"]
 [ext_resource type="Texture2D" uid="uid://b4q4fmm1e5nis" path="res://assets/itens/pixil-frame-0.png" id="1_vqrfm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tvxii"]

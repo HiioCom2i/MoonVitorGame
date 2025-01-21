@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var star_area_scene: PackedScene  # Referência à cena `star area`
+@export var star_spawn_interval: float = 1.0  # Intervalo entre as explosões
+
 # Tempo entre spawns (mínimo e máximo)
 @export var min_spawn_time: float = 3.0
 @export var max_spawn_time: float = 5.0
@@ -63,3 +66,22 @@ func get_random_point_in_area() -> Vector2:
 func decrease_qnt_ataques() -> void:
 	qnt_ataques = qnt_ataques - 1
 	print("qnt_ataques = " + str(qnt_ataques))
+
+func spawn_star_areas() -> void:
+	for i in range(6):  # Cria 6 áreas
+		var delay = i * star_spawn_interval
+		spawn_star_area_with_delay(delay)
+
+# Cria uma área explosiva com atraso
+func spawn_star_area_with_delay(delay: float) -> void:
+	await get_tree().create_timer(delay).timeout
+	spawn_star_area()
+
+# Spawna uma única área explosiva
+func spawn_star_area() -> void:
+	if star_area_scene:
+		var area = star_area_scene.instantiate()
+		var position = get_random_point_in_area()  # Usa a lógica existente para spawnar aleatoriamente
+		area.position = position
+		add_child(area)
+		print("Área explosiva criada em:", position)

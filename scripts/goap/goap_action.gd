@@ -1,4 +1,4 @@
-class_name Action
+class_name GOAPAction
 extends Resource
 
 # Propriedades da ação
@@ -15,7 +15,7 @@ func can_execute(world_state: Dictionary) -> bool:
 	return true
 
 # Executa a ação
-func execute(delta: float) -> bool:
+func execute() -> bool:
 	# Sobrescreva para implementar a lógica da ação
 	return true
 

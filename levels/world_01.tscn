@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bd0dk01lgap8a" path="res://scenes/vida.tscn" id="9_qh0l0"]
 [ext_resource type="PackedScene" uid="uid://d3uqtay0vxr23" path="res://scenes/player.tscn" id="10_rtpl1"]
 [ext_resource type="Texture2D" uid="uid://dyu7ne7yonxmk" path="res://assets/itens/kit-medico.png" id="10_wpbnu"]
-[ext_resource type="PackedScene" uid="uid://clk6pf3dtl0ev" path="res://scenes/ruan_v_ictorejafjasaaadahah.tscn" id="11_naxqk"]
+[ext_resource type="PackedScene" uid="uid://clk6pf3dtl0ev" path="res://scenes/boss.tscn" id="11_naxqk"]
 [ext_resource type="PackedScene" uid="uid://c7w4asngbdhj1" path="res://scenes/ataque.tscn" id="15_87lsr"]
 [ext_resource type="Texture2D" uid="uid://cf1261xnqgdxn" path="res://assets/itens/ataque-lingua.png" id="15_jsj4y"]
 [ext_resource type="PackedScene" uid="uid://dehxgwbdyn1du" path="res://scenes/enemy_cocrodilo.tscn" id="15_re35l"]
