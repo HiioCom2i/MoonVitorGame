@@ -4,65 +4,37 @@ extends CharacterBody2D
 
 # Configurações básicas do boss
 var health: int = 100
-var move_speed: float = 200.0
-var target_position: Vector2  # Posição do alvo para perseguição ou ataque
-
-# Referências e ações
-var actions: Array = []  # Lista de ações disponíveis para o boss
-
-# Sinal para avisar quando o boss iniciar um ataque
-signal attack_started(action_name: String)
+var mana: float = 50
+var max_mana: float = 100
+var actions: Array = []  # Ações disponíveis para o boss
 
 func _ready() -> void:
-	# Configurações iniciais
 	initialize_actions()
+	plan_next_action()
 
-func _process(delta: float) -> void:
-	# Loop de comportamento do boss
-	execute_behavior(delta)
-
-
-# Inicializa as ações disponíveis do boss
+# Inicializa as ações do boss
 func initialize_actions() -> void:
-	var star_attack = BossStarAttack.new(star_spawn_area)
-	star_attack.cost = 5
-	star_attack.preconditions = {"player_in_arena": true}
-	star_attack.effects = {"player_damaged": true}
+	var star_attack = BossStarAttack.new(star_spawn_area)  # Dano: 30
 	actions.append(star_attack)
+	#var smash_attack = BossSmashAttack.new(50)  # Dano: 50
+	#actions.append(smash_attack)
 
-# Executa o comportamento do boss
-func execute_behavior(delta: float) -> void:
-	if health > 50:
-		# Decisão: escolher e executar uma ação
-		perform_action("BossStarAttack")
+# Planeja a próxima ação usando o A* para maximizar dano
+func plan_next_action() -> void:
+	var initial_state = {"mana": mana, "health": health}
+	var goal_state = {"attack": true}  # O objetivo é atacar
+	var astar = AStarGOAP.new()
+
+	var plan = astar.find_best_plan(actions, initial_state, goal_state)
+	if plan.size() > 0:
+		execute_plan(plan)
 	else:
-		print("Boss está ferido e mudando comportamento.")
+		print("Nenhum plano encontrado!")
 
-# Realiza uma ação específica com base no nome
-func perform_action(action_name: String) -> void:
-	for action in actions:
-		if action.get_class() == action_name:
-			emit_signal("attack_started", action_name)
-			if action.execute():
-				print("Ação executada com sucesso:", action_name)
-				action.finalize()
-			else:
-				print("Falha ao executar a ação:", action_name)
+# Executa o plano
+func execute_plan(plan: Array) -> void:
+	for action in plan:
+		if action.can_execute({"mana": mana, "health": health}):
+			action.execute()
+			print("Executando ação:", action.get_class())
 			return
-
-# Recebe dano do jogador
-func take_damage(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		die()
-	else:
-		print("Boss sofreu dano! Vida restante: ", health)
-
-# Função de morte do boss
-func die() -> void:
-	print("Boss derrotado!")
-	queue_free()
-
-# Chamado por `BossStarAttack` para fazer algo com base no ataque
-func on_star_attack_effect() -> void:
-	print("Efeito do StarAttack foi ativado!")

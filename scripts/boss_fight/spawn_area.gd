@@ -84,4 +84,3 @@ func spawn_star_area() -> void:
 		var position = get_random_point_in_area()  # Usa a lógica existente para spawnar aleatoriamente
 		area.position = position
 		add_child(area)
-		print("Área explosiva criada em:", position)

@@ -1,20 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvcofivmtgpo3"]
 
 [ext_resource type="Script" path="res://scripts/primeiro_mapa/star_area.gd" id="1_vahte"]
-[ext_resource type="Texture2D" uid="uid://ccr5w1kfj13ap" path="res://icon.svg" id="2_ackmr"]
+[ext_resource type="Texture2D" uid="uid://dfsltg6ovu68d" path="res://assets/ambiente/ataque-estrela-area.png" id="2_dh8gj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0h030"]
-radius = 22.2036
+radius = 25.5797
 
 [node name="star_area" type="Node2D"]
 script = ExtResource("1_vahte")
 
 [node name="area" type="Area2D" parent="."]
+collision_layer = 128
 
 [node name="colisao" type="CollisionShape2D" parent="area"]
-scale = Vector2(0.9, 0.9)
+scale = Vector2(6, 6)
 shape = SubResource("CircleShape2D_0h030")
 
 [node name="sprite" type="Sprite2D" parent="area"]
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("2_ackmr")
+scale = Vector2(6, 6)
+texture = ExtResource("2_dh8gj")

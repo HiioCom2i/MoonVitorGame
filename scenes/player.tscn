@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d3uqtay0vxr23"]
+[gd_scene load_steps=24 format=3 uid="uid://d3uqtay0vxr23"]
 
 [ext_resource type="Script" path="res://scripts/primeiro_mapa/player.gd" id="1_wtnfe"]
 [ext_resource type="Texture2D" uid="uid://dfiixkf0ta1wr" path="res://assets/personagens/sapoSamurai/sapoFODA.png" id="2_a7seg"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://meayhltsjp4s" path="res://assets/personagens/sapoSamurai/ataque_sapo/sapoFODA9.png" id="11_xgb4c"]
 [ext_resource type="Texture2D" uid="uid://bcqoggchacqy8" path="res://assets/personagens/sapoSamurai/ataque_sapo/sapoFODA10.png" id="12_iwehq"]
 [ext_resource type="Texture2D" uid="uid://c1nfae6caiw6i" path="res://assets/personagens/sapoSamurai/ataque_sapo/sapoFODA11.png" id="13_h36nl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbi7c"]
+size = Vector2(30, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tmhsq"]
 atlas = ExtResource("2_a7seg")
@@ -94,25 +97,24 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nadl3"]
-radius = 18.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_w7or8"]
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wvy7y"]
 radius = 28.1336
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qbi7c"]
-size = Vector2(30, 8)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7drs"]
 size = Vector2(22, 52)
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(626, 457)
-collision_mask = 28
+collision_mask = 158
 script = ExtResource("1_wtnfe")
+
+[node name="corpo_sapo_colisao" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_qbi7c")
 
 [node name="idle_anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_71qle")
@@ -126,14 +128,12 @@ sprite_frames = SubResource("SpriteFrames_3haf0")
 frame = 11
 frame_progress = 1.0
 
-[node name="colisao" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_nadl3")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
 
 [node name="Aura_sapo" type="Area2D" parent="."]
-collision_mask = 5
+visible = false
+collision_mask = 4
 
 [node name="circulo" type="CollisionShape2D" parent="Aura_sapo"]
 shape = SubResource("CircleShape2D_w7or8")
@@ -146,14 +146,6 @@ collision_mask = 64
 [node name="circulo_distancia" type="CollisionShape2D" parent="Aura_sapo_distancia"]
 scale = Vector2(15, 15)
 shape = SubResource("CircleShape2D_wvy7y")
-
-[node name="pe_sapo" type="Area2D" parent="."]
-position = Vector2(1, 6)
-collision_mask = 258
-
-[node name="circulo" type="CollisionShape2D" parent="pe_sapo"]
-position = Vector2(-1, 22)
-shape = SubResource("RectangleShape2D_qbi7c")
 
 [node name="hurtbox" type="Area2D" parent="."]
 collision_mask = 4

@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var player := $player  # Referência ao jogador
 @onready var attack_spawn_area := $spawnArea
-
 @onready var area_de_spawn : Node2D = $spawnArea # PODE REMOVER
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,7 +38,7 @@ func _on_life_collected():
 func _on_attack_collected():
 	player.attack += 1
 	attack_spawn_area.decrease_qnt_ataques()
-	print("ataques coletado " + str(player.attack))
+	#print("ataques coletado " + str(player.attack))
 	$HUD/container_ataque/Controle2/contador_ataques.text = " x " + str(player.attack)
 
 func atualizando_curas() -> void:

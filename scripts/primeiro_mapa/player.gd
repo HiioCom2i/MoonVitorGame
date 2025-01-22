@@ -3,13 +3,14 @@ class_name BaseCharacter
 
 @export_category("Variables")
 @export var _move_speed: float
+@export var ref_cena: Node2D
 @onready var anim := $idle_anim as AnimatedSprite2D
 
 
 var _direction: Vector2 # Variável de direção para movimentação
-var vida = 5
-var medKit = 1
-@onready var attack = 2
+var vida = 10
+var medKit = 2
+var attack = 2
 var canAttack = false
 @onready var hurtbox := $hurtbox as Area2D
 @onready var auraSapo := $Aura_sapo_distancia as Area2D
@@ -104,3 +105,8 @@ func is_death() -> void:
 	if vida <= 0:
 		print("Player Morreu")
 		queue_free()
+
+func take_damage(dano: int) -> void:
+	vida = vida - dano
+	print("vida do player: " + str(vida))
+	ref_cena.update_player_hearts()
