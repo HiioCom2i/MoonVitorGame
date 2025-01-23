@@ -7,7 +7,12 @@ var health: int = 100
 var mana: float = 0.0
 var mana_regeneration_rate: float = 5.0  # Mana regenerada por segundo
 var max_mana: float = 100
-var actions: Array = []  # Ações disponíveis para o boss
+var actions: Array = [] 
+
+@export var hand_left: CharacterBody2D
+@export var hand_right: CharacterBody2D
+
+ # Ações disponíveis para o boss
 
 func _ready() -> void:
 	initialize_actions()
@@ -25,12 +30,20 @@ func _ready() -> void:
 func initialize_actions() -> void:
 	var star_attack = BossStarAttack.new(star_spawn_area)  # Dano: 30
 	actions.append(star_attack)
+	
+	# Inicializa o ataque com as mãos
+	var hand_attack = BossHandAttack.new($".", $".",$".", 1)
+	actions.append(hand_attack)
 
 # Planeja a próxima ação usando o A* para maximizar dano
 func plan_next_action() -> void:
 	var initial_state = {"mana": mana, "health": health}
 	var goal_state = {"attack": true}  # O objetivo é atacar
 	var astar = AStarGOAP.new()
+
+	# Criar uma instância da ação de ataque com as mãos
+	var hand_attack = BossHandAttack.new($".", $".",$".", 1)
+	actions.append(hand_attack)
 
 	var plan = astar.find_best_plan(actions, initial_state, goal_state)
 	if plan.size() > 0:

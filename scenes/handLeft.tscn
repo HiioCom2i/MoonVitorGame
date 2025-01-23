@@ -1,7 +1,62 @@
-[gd_scene load_steps=9 format=3 uid="uid://dypblvjn0rrjk"]
+[gd_scene load_steps=25 format=3 uid="uid://dypblvjn0rrjk"]
 
+[ext_resource type="Texture2D" uid="uid://34eemleq2pxr" path="res://assets/personagens/joaoVitor/attack-sheet.png" id="1_kctv0"]
 [ext_resource type="Texture2D" uid="uid://dbbpf63yc2bq3" path="res://assets/personagens/joaoVitor/idle-sheet.png" id="1_pxmbe"]
 [ext_resource type="Script" path="res://scripts/boss_fight/bossHandLeft.gd" id="2_gscsy"]
+[ext_resource type="Texture2D" uid="uid://b4rnue8k2jlwq" path="res://assets/personagens/joaoVitor/handDeath-sheet.png" id="2_k1f80"]
+[ext_resource type="Texture2D" uid="uid://cf5lxki7lesku" path="res://assets/personagens/joaoVitor/fist-sheet.png" id="3_wxn7o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8oto"]
+atlas = ExtResource("1_kctv0")
+region = Rect2(0, 0, 78, 147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riv6l"]
+atlas = ExtResource("1_kctv0")
+region = Rect2(78, 0, 78, 147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_625h6"]
+atlas = ExtResource("1_kctv0")
+region = Rect2(156, 0, 78, 147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojs2e"]
+atlas = ExtResource("1_kctv0")
+region = Rect2(234, 0, 78, 147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ao18"]
+atlas = ExtResource("1_kctv0")
+region = Rect2(312, 0, 78, 147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr8hq"]
+atlas = ExtResource("2_k1f80")
+region = Rect2(0, 0, 77, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfawx"]
+atlas = ExtResource("2_k1f80")
+region = Rect2(77, 0, 77, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcalx"]
+atlas = ExtResource("2_k1f80")
+region = Rect2(231, 0, 77, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xq5g"]
+atlas = ExtResource("2_k1f80")
+region = Rect2(154, 0, 77, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3gr8"]
+atlas = ExtResource("3_wxn7o")
+region = Rect2(0, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnhin"]
+atlas = ExtResource("3_wxn7o")
+region = Rect2(75, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4r5u"]
+atlas = ExtResource("3_wxn7o")
+region = Rect2(150, 0, 75, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ou5h"]
+atlas = ExtResource("3_wxn7o")
+region = Rect2(225, 0, 75, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtrq5"]
 atlas = ExtResource("1_pxmbe")
@@ -23,6 +78,60 @@ region = Rect2(171, 0, 57, 56)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_i8oto")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_riv6l")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_625h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojs2e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ao18")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_xr8hq")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_sfawx")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_gcalx")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_8xq5g")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3gr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnhin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4r5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ou5h")
+}],
+"loop": true,
+"name": &"fist",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mtrq5")
 }, {
 "duration": 1.0,
@@ -42,13 +151,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwy8u"]
 size = Vector2(26, 26)
 
-[node name="handRight" type="CharacterBody2D"]
+[node name="handLeft" type="CharacterBody2D"]
 
 [node name="handAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 5)
 scale = Vector2(0.763158, 0.732143)
 sprite_frames = SubResource("SpriteFrames_86jur")
-animation = &"idle"
+animation = &"death"
+frame_progress = 0.0619316
 script = ExtResource("2_gscsy")
 
 [node name="collision" type="CollisionShape2D" parent="."]
