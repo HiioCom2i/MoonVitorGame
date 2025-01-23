@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://dypblvjn0rrjk"]
+
+[ext_resource type="Texture2D" uid="uid://dbbpf63yc2bq3" path="res://assets/personagens/joaoVitor/idle-sheet.png" id="1_pxmbe"]
+[ext_resource type="Script" path="res://scripts/boss_fight/bossHandLeft.gd" id="2_gscsy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtrq5"]
+atlas = ExtResource("1_pxmbe")
+region = Rect2(114, 0, 57, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l532a"]
+atlas = ExtResource("1_pxmbe")
+region = Rect2(57, 0, 57, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66c1a"]
+atlas = ExtResource("1_pxmbe")
+region = Rect2(0, 0, 57, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qupmt"]
+atlas = ExtResource("1_pxmbe")
+region = Rect2(171, 0, 57, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86jur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtrq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l532a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66c1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qupmt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwy8u"]
+size = Vector2(26, 26)
+
+[node name="handRight" type="CharacterBody2D"]
+
+[node name="handAnim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(0.763158, 0.732143)
+sprite_frames = SubResource("SpriteFrames_86jur")
+animation = &"idle"
+script = ExtResource("2_gscsy")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(2, 7)
+shape = SubResource("RectangleShape2D_iwy8u")

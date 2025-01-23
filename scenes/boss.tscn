@@ -1,18 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://clk6pf3dtl0ev"]
+[gd_scene load_steps=9 format=3 uid="uid://clk6pf3dtl0ev"]
 
-[ext_resource type="Texture2D" uid="uid://cfycywapgtrnl" path="res://assets/personagens/joaoVitor/ruanVIctorejafjasaaadahah.png" id="1_enm28"]
+[ext_resource type="Texture2D" uid="uid://c4hjwss8nq6le" path="res://assets/personagens/joaoVitor/moonVitor-sheet.png" id="1_sl7wo"]
+[ext_resource type="Script" path="res://scripts/boss_fight/boss_anim.gd" id="2_icpw5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7lqad"]
 radius = 18.7499
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsxge"]
+atlas = ExtResource("1_sl7wo")
+region = Rect2(0, 0, 51, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vygf8"]
+atlas = ExtResource("1_sl7wo")
+region = Rect2(51, 0, 51, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejgee"]
+atlas = ExtResource("1_sl7wo")
+region = Rect2(102, 0, 51, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kt3i"]
+atlas = ExtResource("1_sl7wo")
+region = Rect2(153, 0, 51, 46)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5oekp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_enm28")
+"texture": SubResource("AtlasTexture_hsxge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vygf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejgee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kt3i")
 }],
 "loop": true,
-"name": &"idle1",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -24,7 +50,10 @@ visible = false
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_7lqad")
 
-[node name="sprite_animado" type="AnimatedSprite2D" parent="."]
+[node name="bossAnim" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_5oekp")
-animation = &"idle1"
+animation = &"idle"
+frame = 2
+frame_progress = 0.282256
+script = ExtResource("2_icpw5")

@@ -129,7 +129,7 @@ frame = 11
 frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
+zoom = Vector2(0.9, 0.9)
 
 [node name="Aura_sapo" type="Area2D" parent="."]
 visible = false

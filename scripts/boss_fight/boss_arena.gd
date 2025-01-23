@@ -4,7 +4,6 @@ extends Node2D
 @onready var attack_spawn_area := $spawnArea
 @onready var area_de_spawn : Node2D = $spawnArea # PODE REMOVER
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
