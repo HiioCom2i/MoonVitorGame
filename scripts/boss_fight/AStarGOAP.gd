@@ -2,34 +2,36 @@ class_name AStarGOAP
 
 # Representa o algoritmo A* para o GOAP
 func find_best_plan(actions: Array, initial_state: Dictionary, goal_state: Dictionary) -> Array:
-	# Nós abertos e fechados
 	var open_list = []
 	var closed_list = []
 
-	# Adiciona o estado inicial à lista aberta
 	open_list.append({
 		"state": initial_state,
 		"path": [],
 		"g": 0,
 		"h": heuristic(initial_state, goal_state),
-		"f": 0  # Será calculado como g + h
+		"f": 0
 	})
 
 	while open_list.size() > 0:
-		# Ordena os nós pelo menor f (g + h)
 		open_list.sort_custom(_compare_by_f)
 		var current_node = open_list.pop_front()
 
-		# Verifica se o estado atual atende ao objetivo
+		print("Estado atual: ", current_node["state"])
+		print("Caminho atual: ", current_node["path"])
+
 		if is_goal_reached(current_node["state"], goal_state):
+			print("Objetivo alcançado!")
 			return current_node["path"]
 
 		closed_list.append(current_node)
 
-		# Expande os estados vizinhos com base nas ações disponíveis
 		for action in actions:
 			if action.can_execute(current_node["state"]):
 				var new_state = action.apply(current_node["state"])
+				print("Nova ação: ", action)
+				print("Novo estado: ", new_state)
+
 				var new_g = current_node["g"] + calculate_cost(action)
 				var new_node = {
 					"state": new_state,
@@ -38,13 +40,12 @@ func find_best_plan(actions: Array, initial_state: Dictionary, goal_state: Dicti
 					"h": heuristic(new_state, goal_state),
 					"f": new_g + heuristic(new_state, goal_state)
 				}
-				
-				# Ignorar estados já processados
+
 				if not _is_in_list(closed_list, new_state):
 					open_list.append(new_node)
-
-	# Se não encontrar um plano, retorna vazio
+	print("Nenhum plano encontrado!")
 	return []
+
 
 # Calcula a heurística (pode ser zero, ou uma estimativa futura)
 func heuristic(state: Dictionary, goal: Dictionary) -> float:

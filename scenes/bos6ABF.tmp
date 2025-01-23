@@ -98,7 +98,7 @@ layer_2/name = "gramas"
 layer_2/tile_data = PackedInt32Array(1769447, 65541, 1, 2621415, 65541, 1, 2686951, 65541, 1, 1703916, 65541, 1, 2490354, 65541, 1, 2621426, 65541, 1, 2162676, 65541, 1, 1245174, 4, 1, 1114105, 65541, 1, 1507327, 65541, 1, 1507328, 65541, 1, 2293766, 65541, 1, 2621450, 65541, 1, 1376268, 65541, 1, 2097164, 65541, 1, 1966096, 65541, 1, 2621457, 65541, 1, 2686996, 65541, 1, 1769444, 4, 1, 1048553, 4, 1, 1114093, 4, 1, 2293742, 4, 1, 2490350, 4, 1, 1114096, 196615, 4, 1703920, 4, 1, 1769457, 4, 1, 2097137, 4, 1, 2359281, 4, 1, 1834995, 4, 1, 1572852, 4, 1, 1048566, 4, 1, 983031, 4, 1, 1310718, 4, 1, 1769471, 4, 1, 2621439, 4, 1, 786432, 4, 1, 1310720, 4, 1, 1507330, 4, 1, 2555907, 4, 1, 1114116, 4, 1, 1638404, 4, 1, 1376261, 4, 1, 2097158, 4, 1, 786439, 4, 1, 2686984, 4, 1, 2424846, 4, 1, 2162706, 4, 1, 786451, 4, 1, 2752531, 4, 1, 851988, 4, 1, 1310705, 196615, 4, 2359312, 196615, 4, 1245201, 196615, 4, 2162664, 196615, 4, 2031601, 196615, 4, 1900534, 196615, 4, 3014642, 196615, 4, 2949115, 196615, 4)
 
 [node name="player" parent="." node_paths=PackedStringArray("ref_cena") instance=ExtResource("9_ahs18")]
-position = Vector2(-7, 273)
+position = Vector2(54, 538)
 collision_mask = 142
 _move_speed = 200.0
 ref_cena = NodePath("..")
@@ -237,13 +237,11 @@ shape = SubResource("RectangleShape2D_bft2n")
 
 [node name="listaAtaques" type="Node2D" parent="spawnArea"]
 
-[node name="jVMoon" parent="." node_paths=PackedStringArray("star_spawn_area", "hand_left", "hand_right") instance=ExtResource("16_3j74i")]
+[node name="jVMoon" parent="." node_paths=PackedStringArray("star_spawn_area") instance=ExtResource("16_3j74i")]
 position = Vector2(-7, 27)
 scale = Vector2(10, 10)
 script = ExtResource("16_gikxp")
 star_spawn_area = NodePath("../spawnArea")
-hand_left = NodePath("../handLeft")
-hand_right = NodePath("../handRight")
 
 [node name="handLeft" parent="." instance=ExtResource("20_47pbl")]
 position = Vector2(-253, -58)

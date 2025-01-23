@@ -1,12 +1,14 @@
-extends AnimatedSprite2D
+extends CharacterBody2D
 
-@onready var hand_anim: AnimatedSprite2D = $"."
+@onready var hand_anim: AnimatedSprite2D = $handAnim
 
 
 func _ready() -> void:
 	hand_anim.scale.x *= -1
-	hand_anim.play("idle") 
-
+	hand_anim.play("idle")
+	 
+func attack():
+	hand_anim.stop()
 
 
 func _process(delta: float) -> void:

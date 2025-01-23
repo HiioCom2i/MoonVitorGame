@@ -152,14 +152,14 @@ animations = [{
 size = Vector2(26, 26)
 
 [node name="handLeft" type="CharacterBody2D"]
+script = ExtResource("2_gscsy")
 
 [node name="handAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 5)
 scale = Vector2(0.763158, 0.732143)
 sprite_frames = SubResource("SpriteFrames_86jur")
 animation = &"death"
-frame_progress = 0.0619316
-script = ExtResource("2_gscsy")
+frame_progress = 0.988887
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(2, 7)
