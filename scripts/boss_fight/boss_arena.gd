@@ -21,7 +21,7 @@ func iniciando_vidas_e_ataques() -> void:
 	for vidas in $vidas.get_children():  # Todas vidas estão no Node2D 'vidas'
 		vidas.connect("life_collected", Callable(self, "_on_life_collected"))
 	# Conectando o sinal de cada ataque ao método que atualiza seu contador
-	for ataque in $ataques.get_children():  # Todos ataques estão no Node2D 'ataques'
+	for ataque in $spawnArea/listaAtaques.get_children():  # Todos ataques estão no Node2D 'ataques'
 		ataque.connect("attack_collected", Callable(self, "_on_attack_collected"))
 
 func iniciando_ataques() -> void:

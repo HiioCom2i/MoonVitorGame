@@ -12,9 +12,10 @@ var initial_state = {
 
 var health: int = 20
 var mana: float = 0.0
-var mana_regeneration_rate: float = 5.0 # Mana regenerada por segundo
-var max_mana: float = 100
+var mana_regeneration_rate: float = 0.0 # Mana regenerada por segundo
+var max_mana: float = 60
 var actions: Array = []
+
 
 @export var hand_left: CharacterBody2D
 @export var hand_right: CharacterBody2D
@@ -84,20 +85,13 @@ func execute_plan(plan: Array) -> void:
 		if action.can_execute({"mana": mana, "health": health}):
 			action.execute()
 			print("Executando ação:", action.get_class())
-			action.finalize()
 
-			# Atualiza os estados globais com os efeitos da ação
-			#global_state["attack_timer_ready"] = false # Desabilita ataques temporariamente
-			#var attack_timer = $Timer
-			#attack_timer.start() # Inicia o cooldown do AttackTimer
 			return
 
 # Regenera mana ao longo do tempo
-func regenerate_mana() -> void:
-	mana += mana_regeneration_rate
-	if mana > max_mana:
-		mana = max_mana # Garante que a mana não exceda o máximo
-	print("Mana atual:", mana)
+func set_mana(value: int):
+	self.mana = clamp(value, 0, 60)  # Ajusta entre 0 e o máximo de 60
+	print("Mana atual: ", mana)
 
 # Reseta o estado do AttackTimer
 func reset_attack_timer() -> void:

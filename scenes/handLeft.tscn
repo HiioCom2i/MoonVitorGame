@@ -158,9 +158,10 @@ script = ExtResource("2_gscsy")
 position = Vector2(0, 5)
 scale = Vector2(0.763158, 0.732143)
 sprite_frames = SubResource("SpriteFrames_86jur")
-animation = &"death"
-frame_progress = 0.988887
+animation = &"idle"
+frame_progress = 0.466572
 
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 7)
 shape = SubResource("RectangleShape2D_iwy8u")

@@ -18,7 +18,10 @@ func find_best_plan(actions: Array, initial_state: Dictionary, goal_state: Dicti
 		var current_node = open_list.pop_front()
 
 		print("Estado atual: ", current_node["state"])
-		print("Caminho atual: ", current_node["path"])
+		var path_names = []
+		for action in current_node["path"]:
+			path_names.append(action.action_name)
+		print("Caminho atual: ", path_names)
 
 		if is_goal_reached(current_node["state"], goal_state):
 			print("Objetivo alcançado!")
