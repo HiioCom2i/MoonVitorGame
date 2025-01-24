@@ -149,7 +149,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwy8u"]
-size = Vector2(26, 26)
+size = Vector2(38, 35)
 
 [node name="handLeft" type="CharacterBody2D"]
 script = ExtResource("2_gscsy")
@@ -158,9 +158,8 @@ script = ExtResource("2_gscsy")
 position = Vector2(0, 5)
 scale = Vector2(0.763158, 0.732143)
 sprite_frames = SubResource("SpriteFrames_86jur")
-animation = &"death"
-frame_progress = 0.988887
+animation = &"attack"
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(2, 7)
+position = Vector2(8, 11.5)
 shape = SubResource("RectangleShape2D_iwy8u")

@@ -108,104 +108,8 @@ animations = [{
 }, {
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_etljm")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_lgini")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_wsras")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_l25ce")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_etljm")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_lgini")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_wsras")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_l25ce")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_etljm")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_lgini")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_wsras")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_l25ce")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_etljm")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_lgini")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_wsras")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_l25ce")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_etljm")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_lgini")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_wsras")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_l25ce")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_etljm")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_lgini")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_wsras")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_l25ce")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_etljm")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_lgini")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_wsras")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_l25ce")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_etljm")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_lgini")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_wsras")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_l25ce")
-}, {
-"duration": 0.5,
-"texture": SubResource("AtlasTexture_etljm")
 }],
-"loop": false,
+"loop": true,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -245,7 +149,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwy8u"]
-size = Vector2(40, 40)
+size = Vector2(26, 26)
 
 [node name="handRight" type="CharacterBody2D"]
 script = ExtResource("2_rgpgn")
@@ -254,12 +158,13 @@ script = ExtResource("2_rgpgn")
 position = Vector2(0, 5)
 scale = Vector2(0.763158, 0.732143)
 sprite_frames = SubResource("SpriteFrames_86jur")
-animation = &"death"
-frame = 35
-frame_progress = 1.0
+animation = &"fist"
+frame = 3
+frame_progress = 0.493918
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(9, 14)
+visible = false
+position = Vector2(2, 7)
 shape = SubResource("RectangleShape2D_iwy8u")
 
 [connection signal="animation_finished" from="handAnim" to="." method="_on_hand_anim_animation_finished"]

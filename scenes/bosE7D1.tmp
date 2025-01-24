@@ -223,6 +223,9 @@ text = " x 10"
 position = Vector2(9, 461)
 script = ExtResource("14_y28ke")
 star_area_scene = ExtResource("15_qjsh0")
+star_spawn_interval = null
+min_spawn_time = null
+max_spawn_time = null
 max_attacks = 6
 collectible_scene = ExtResource("14_8iw5m")
 
