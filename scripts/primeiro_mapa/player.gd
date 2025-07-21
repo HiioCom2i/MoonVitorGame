@@ -5,6 +5,7 @@ class_name BaseCharacter
 @export var _move_speed: float
 @export var ref_cena: Node2D
 @onready var anim := $idle_anim as AnimatedSprite2D
+@onready var attack_hitbox: Area2D = $attack_hitbox
 
 
 var _direction: Vector2 # Variável de direção para movimentação
@@ -38,6 +39,7 @@ func _ready() -> void:
 	
 	# Conectar o sinal "animation_finished" para saber quando o ataque termina
 	$ataque_anim.connect("animation_finished", Callable(self, "_on_attack_animation_finished"))
+	$attack_hitbox.connect("body_entered", Callable(self, "_on_attack_hitbox_body_entered"))
 
 func get_attack() -> int:
 	return attack
@@ -88,18 +90,24 @@ func print_area_states() -> void:
 
 # Função para iniciar a animação de ataque
 func play_attack_animation():
-	$idle_anim.visible = false   # Desativar idle
-	$ataque_anim.visible = true  # Ativar ataque
-	$ataque_anim.play("default") # Tocar a animação de ataque uma vez
+	$idle_anim.visible = false
+	$ataque_anim.visible = true
+	$ataque_anim.play("default")
 	canAttack = true
-	
 
-# Função chamada quando a animação de ataque termina ()
+	attack_hitbox.monitoring = true  # Ativa a hitbox para detectar colisões
+
 func _on_attack_animation_finished():
-	$ataque_anim.visible = false  # Desativar ataque
+	$ataque_anim.visible = false
 	canAttack = false
-	$idle_anim.visible = true     # Reativar idle
+	attack_hitbox.monitoring = false  # Desativa a hitbox
+	$idle_anim.visible = true
 	$idle_anim.play("default")    # Tocar a animação de idle
+	
+func _on_attack_hitbox_body_entered(body: Node) -> void:
+	if canAttack and body.is_in_group("Boss"):
+		body.take_damage(5)
+		print("Boss atingido pela hitbox do ataque!")		
 	
 func is_death() -> void:
 	if vida <= 0:

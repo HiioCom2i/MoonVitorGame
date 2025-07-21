@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://34eemleq2pxr" path="res://assets/personagens/joaoVitor/attack-sheet.png" id="1_kctv0"]
 [ext_resource type="Texture2D" uid="uid://dbbpf63yc2bq3" path="res://assets/personagens/joaoVitor/idle-sheet.png" id="1_pxmbe"]
-[ext_resource type="Script" path="res://scripts/boss_fight/bossHandLeft.gd" id="2_gscsy"]
+[ext_resource type="Script" uid="uid://fwki5m40aqsq" path="res://scripts/boss_fight/bossHandLeft.gd" id="2_gscsy"]
 [ext_resource type="Texture2D" uid="uid://b4rnue8k2jlwq" path="res://assets/personagens/joaoVitor/handDeath-sheet.png" id="2_k1f80"]
 [ext_resource type="Texture2D" uid="uid://cf5lxki7lesku" path="res://assets/personagens/joaoVitor/fist-sheet.png" id="3_wxn7o"]
 
@@ -151,15 +151,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwy8u"]
 size = Vector2(38, 35)
 
-[node name="handLeft" type="CharacterBody2D"]
+[node name="handLeft" type="CharacterBody2D" groups=["BossParts"]]
 script = ExtResource("2_gscsy")
 
 [node name="handAnim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 5)
 scale = Vector2(0.763158, 0.732143)
 sprite_frames = SubResource("SpriteFrames_86jur")
-animation = &"attack"
+animation = &"death"
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(8, 11.5)
+position = Vector2(-9, 12)
 shape = SubResource("RectangleShape2D_iwy8u")

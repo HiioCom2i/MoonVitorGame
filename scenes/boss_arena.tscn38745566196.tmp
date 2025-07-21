@@ -246,9 +246,9 @@ hand_left = NodePath("../handLeft")
 hand_right = NodePath("../handRight")
 
 [node name="handLeft" parent="." instance=ExtResource("20_47pbl")]
-position = Vector2(-231, -60)
+position = Vector2(-382, -239)
 scale = Vector2(7.195, 7.195)
 
 [node name="handRight" parent="." instance=ExtResource("19_wce1m")]
-position = Vector2(287, -28)
+position = Vector2(373, -215)
 scale = Vector2(7.195, 7.195)

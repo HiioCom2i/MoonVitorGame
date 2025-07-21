@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://clk6pf3dtl0ev"]
 
 [ext_resource type="Texture2D" uid="uid://c4hjwss8nq6le" path="res://assets/personagens/joaoVitor/moonVitor-sheet.png" id="1_sl7wo"]
-[ext_resource type="Script" path="res://scripts/boss_fight/boss_anim.gd" id="2_icpw5"]
+[ext_resource type="Script" uid="uid://ca7u5adqoj0db" path="res://scripts/boss_fight/boss_anim.gd" id="2_icpw5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7lqad"]
 radius = 18.7499
@@ -42,11 +42,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="JVMoon" type="CharacterBody2D"]
+[node name="JVMoon" type="CharacterBody2D" groups=["Boss"]]
 collision_layer = 128
 
 [node name="colisao" type="CollisionShape2D" parent="."]
-visible = false
 scale = Vector2(0.7, 0.7)
 shape = SubResource("CircleShape2D_7lqad")
 
@@ -54,6 +53,5 @@ shape = SubResource("CircleShape2D_7lqad")
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_5oekp")
 animation = &"idle"
-frame = 2
-frame_progress = 0.282256
+frame_progress = 0.739649
 script = ExtResource("2_icpw5")

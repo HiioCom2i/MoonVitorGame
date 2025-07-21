@@ -30,7 +30,7 @@ func _init(hand_left: CharacterBody2D, hand_right: CharacterBody2D, spawn_node: 
 	}
 	
 	# Configuração do custo
-	cost = -damage + 30.0  # Ajuste o valor base conforme necessário
+	cost = -damage  # Ajuste o valor base conforme necessário
 
 
 # Simula os efeitos da ação

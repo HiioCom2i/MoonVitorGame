@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dbbpf63yc2bq3" path="res://assets/personagens/joaoVitor/idle-sheet.png" id="1_3kwha"]
 [ext_resource type="Texture2D" uid="uid://34eemleq2pxr" path="res://assets/personagens/joaoVitor/attack-sheet.png" id="1_qy854"]
 [ext_resource type="Texture2D" uid="uid://b4rnue8k2jlwq" path="res://assets/personagens/joaoVitor/handDeath-sheet.png" id="2_0k3mk"]
-[ext_resource type="Script" path="res://scripts/boss_fight/bossHandRight.gd" id="2_rgpgn"]
+[ext_resource type="Script" uid="uid://balxfogncbtql" path="res://scripts/boss_fight/bossHandRight.gd" id="2_rgpgn"]
 [ext_resource type="Texture2D" uid="uid://cf5lxki7lesku" path="res://assets/personagens/joaoVitor/fist-sheet.png" id="3_8dqqs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d12o5"]
@@ -247,7 +247,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwy8u"]
 size = Vector2(40, 40)
 
-[node name="handRight" type="CharacterBody2D"]
+[node name="handRight" type="CharacterBody2D" groups=["BossParts"]]
 script = ExtResource("2_rgpgn")
 
 [node name="handAnim" type="AnimatedSprite2D" parent="."]

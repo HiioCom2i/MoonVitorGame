@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://c7w4asngbdhj1"]
 
 [ext_resource type="Texture2D" uid="uid://sb1uiepvl1fj" path="res://assets/itens/anim-ataque-lingua/ataque-lingua1.png" id="1_dpra5"]
-[ext_resource type="Script" path="res://scripts/coletaveis/ataque.gd" id="1_ryqln"]
+[ext_resource type="Script" uid="uid://dfocm3jnixv8f" path="res://scripts/coletaveis/ataque.gd" id="1_ryqln"]
 [ext_resource type="Texture2D" uid="uid://c7melajp7mp51" path="res://assets/itens/anim-ataque-lingua/ataque-lingua2.png" id="2_o1pn8"]
 [ext_resource type="Texture2D" uid="uid://bm32ca8yvoale" path="res://assets/itens/anim-ataque-lingua/ataque-lingua3.png" id="3_mt7y4"]
 [ext_resource type="Texture2D" uid="uid://cgg7fvj8askpd" path="res://assets/itens/anim-ataque-lingua/ataque-lingua4.png" id="4_3fvgb"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dftrlq3p3rof2"]
 
-[ext_resource type="Script" path="res://scripts/inimigos/enemy.gd" id="1_k4h3b"]
+[ext_resource type="Script" uid="uid://dctfbc1q7at8c" path="res://scripts/inimigos/enemy.gd" id="1_k4h3b"]
 [ext_resource type="Texture2D" uid="uid://cxqpegfo65oqr" path="res://assets/personagens/inimigos/inimigo1/inimigoMaisPerigosoRemake1.png" id="2_7jehb"]
 [ext_resource type="Texture2D" uid="uid://ch8ivm7dc3kkx" path="res://assets/personagens/inimigos/inimigo1/inimigoMaisPerigosoRemake2.png" id="3_aqfiy"]
 [ext_resource type="PackedScene" uid="uid://jd3swljpxcl4" path="res://prefabs/hitbox.tscn" id="3_astn8"]

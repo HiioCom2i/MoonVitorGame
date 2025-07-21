@@ -4,7 +4,7 @@ extends GOAPAction
 var hand_left: CharacterBody2D
 var hand_right: CharacterBody2D
 var boss: CharacterBody2D
-var damage: float  # Defina o dano aqui
+var damage: float # Defina o dano aqui
 var action_name = "BossHandAttack"
 var cooldown_time = 4.0  # Tempo de cooldown em segundos
 var is_in_cooldown = false

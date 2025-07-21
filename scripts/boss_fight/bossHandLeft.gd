@@ -41,3 +41,7 @@ func _on_hand_anim_animation_finished() -> void:
 		print("Retornando para a animação 'idle'")
 	else:
 		print("A animação 'idle' não existe no handAnim!")
+
+func die():
+	print("Mão morreu!")
+	queue_free()
